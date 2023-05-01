@@ -7,11 +7,27 @@ import live.midreamsheep.markdown.parser.element.elements.span.spans.Span;
 
 import java.util.List;
 
-
+/**
+ * 表格数据解析器，将表格数据解析为表格行类型
+ * 表格行类型由表格头、表格规则、表格内容组成
+ * @author midreamsheep
+ * @since 2023/5/1
+ * @version 1.0
+ * @see TableLine
+ * @see TableRules
+ * */
 public class TableParser implements MarkdownLineParserInter {
 
+    /**
+     * 具体解析方法
+     * 解析步骤：
+     *  1.解析表格头
+     *  2.解析表格规则
+     *  3.解析表格内容
+     * */
     @Override
     public int parse(String[] lines, int index, List<MarkdownLineElement> elements) {
+        //解析表格头
         String line = lines[index].trim();
         if (line.length() < 3 || line.charAt(0) != '|' || line.charAt(line.length() - 1) != '|') {
             return -1;
@@ -42,7 +58,11 @@ public class TableParser implements MarkdownLineParserInter {
         elements.add(tableLine);
         return index;
     }
-
+    /**
+     * 对表格中的内容进行行内解析
+     * @param spans 将要解析的文本
+     * @return 解析后的Span数组,其中Span为组合类型
+     * */
     private Span[] parseSpan(String[] spans) {
         Span[] tableHead = new Span[spans.length];
         for (int i = 0; i < spans.length; i++) {
@@ -50,7 +70,17 @@ public class TableParser implements MarkdownLineParserInter {
         }
         return tableHead;
     }
-
+    /**
+     * 解析表格规则
+     * @param tableRule 表格规则数组
+     * @param tableRules 表格规则文本数组
+     *                   表格规则文本格式：
+     *                     1. --------- 左对齐
+     *                     2. :--------: 居中对齐
+     *                     3. --------: 右对齐
+     *                     4. :--------  左对齐
+     * @return 解析成功返回1，解析失败返回-1
+     * */
     private int parseTableRules(TableRules[] tableRule,String[] tableRules){
         for (int i = 0; i < tableRules.length; i++) {
             String rule = tableRules[i].trim();
@@ -68,6 +98,13 @@ public class TableParser implements MarkdownLineParserInter {
         }
         return 1;
     }
+    /**
+     * 解析表格内容
+     * @param tableLine 表格行类型
+     * @param lines 将要解析的文本
+     * @param index 解析开始的行数
+     * @return 解析结束的行数
+     * */
     private int parseBody(TableLine tableLine, String[] lines, int index) {
         for (int i = index; i < lines.length; i++) {
             String line = lines[i].trim();
