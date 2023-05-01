@@ -45,13 +45,10 @@ public class MarkdownLineParserMapper {
         register("`", new CodeParser());
         //分割线类型
         register("-", (lines,index,elements) -> {
-            long start = System.currentTimeMillis();
             if(MarkdownParserStringUntil.isAlways(lines[index].trim().toCharArray(), '-')&&lines[index].trim().length()>=3){
                 elements.add(new HorizontalLine());
                 return index;
             }
-            long end = System.currentTimeMillis();
-            System.out.println(end-start);
             return -1;
         });
         register("*", (lines,index,elements) -> {

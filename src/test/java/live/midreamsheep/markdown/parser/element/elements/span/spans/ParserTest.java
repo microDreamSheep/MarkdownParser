@@ -1,28 +1,29 @@
 package live.midreamsheep.markdown.parser.element.elements.span.spans;
 
 import live.midreamsheep.markdown.parser.MarkdownParser;
+import live.midreamsheep.markdown.parser.element.elements.line.MarkdownLineElement;
+import live.midreamsheep.markdown.parser.page.MarkdownPage;
 import org.junit.Test;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
 
 public class ParserTest {
     @Test
-    public void parserTest() {
-        Span span = new Span();
-        MarkdownParser.parse(
-                "\n|hello|dawd|\n" +
-                "|:--:|:---|\n" +
-                "|**asdsda**|阿斯顿萨asd达|\n" +
-                "|dsa||\n" +
-                "|asd|asd|dsad|asdsads|"+
-                "> sadsad\n" +
-                        ">\n" +
-                        "> hello **word** _你好_ \n" +
-                        ">\n" +
-                        "> > ```java\n" +
-                        "> > 和嗯咯哦按实际的撒旦\n" +
-                        "> > ```\n" +
-                        ">\n" +
-                        "> > asdsdad\n" +
-                        ">\n" +
-                        "> > [百度](www.baidu.com \"百度\")");
+    public void parserTest() throws IOException {
+        InputStream is = Files.newInputStream(Paths.get(""));
+        StringBuilder sb = new StringBuilder();
+        int ch;
+        while ((ch = is.read()) != -1) {
+            sb.append((char) ch);
+        }
+        String markdown = sb.toString();
+        MarkdownPage page = MarkdownParser.parse(markdown);
+        List<MarkdownLineElement> elements = page.getElements();
     }
 }

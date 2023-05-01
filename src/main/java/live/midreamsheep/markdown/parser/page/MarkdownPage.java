@@ -51,6 +51,8 @@ public class MarkdownPage {
             }
             i = result;
         }
-        System.out.println("asd");
+    }
+    public List<MarkdownLineElement> getElements() {
+        return elements;
     }
 }
