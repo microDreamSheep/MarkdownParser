@@ -11,10 +11,10 @@ import live.midreamsheep.markdown.parser.element.elements.span.spans.Span;
  *      ***
  *      ___
  * 解析器由lambda表达式实现，不需要单独的解析器
- * @see live.midreamsheep.markdown.parser.element.elements.line.MarkdownLineParserMapper
  * @author midreamsheep
  * @since 2023/5/1
  * @version 1.0
+ * @see live.midreamsheep.markdown.parser.element.elements.line.MarkdownLineParserMapper
  * */
 public class HorizontalLine extends MarkdownLineElement {
 

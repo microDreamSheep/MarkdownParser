@@ -9,12 +9,12 @@ import live.midreamsheep.markdown.parser.element.elements.span.spans.Span;
  * @author midreamsheep
  * @since 2023/5/1
  * @version 1.0
+ * @see live.midreamsheep.markdown.parser.element.elements.span.SpanParser
  * */
 public class Standard extends MarkdownLineElement {
     /**
      * 默认构造器
      * @param parse 行内容，由解析器解析后传入
-     * @see live.midreamsheep.markdown.parser.element.elements.span.SpanParser
      * */
     public Standard(Span parse) {
         this.content = parse;

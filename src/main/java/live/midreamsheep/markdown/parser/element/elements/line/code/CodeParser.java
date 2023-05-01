@@ -10,9 +10,9 @@ import java.util.List;
 /**
  * 代码块类型解析器
  * @author midreamsheep
- * @see live.midreamsheep.markdown.parser.element.elements.line.code.CodeLine
  * @since 2023/5/1
  * @version 1.0
+ * @see live.midreamsheep.markdown.parser.element.elements.line.code.CodeLine
  * */
 public class CodeParser implements MarkdownLineParserInter {
 

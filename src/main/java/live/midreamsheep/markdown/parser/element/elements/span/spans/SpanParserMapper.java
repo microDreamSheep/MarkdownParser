@@ -8,6 +8,17 @@ import live.midreamsheep.markdown.parser.element.elements.span.spans.link.LinkPa
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Span解析器映射表
+ * 用于存储Span解析表
+ * @author midreamsheep
+ * @since 2023/5/1
+ * @version 1.0
+ * @see live.midreamsheep.markdown.parser.element.elements.span.spans.Span
+ * @see live.midreamsheep.markdown.parser.element.elements.span.spans.SpanParserMapper
+ * @see live.midreamsheep.markdown.parser.element.elements.span.spans.SpanParserInter
+ * @see live.midreamsheep.markdown.parser.element.elements.span.spans.SpanElementType
+ * */
 public class SpanParserMapper {
     private static final Map<String, SpanParserInter> mapper = new HashMap<>();
 
@@ -15,6 +26,15 @@ public class SpanParserMapper {
         mapper.put(key, parser);
     }
 
+    /**
+     * 获取解析器，通过key
+     * @param key 解析器key
+     *            用于获取解析器
+     *            内部存储两种解析器，一种是通过标识符存储，一种是通过标识符的第一个字符存储
+     *            例如：标识符为link，那么通过link和[都可以获取到解析器
+     *            多个首字母冲突则通过Lambda表达式解决
+     * @return 解析器
+     * */
     public static SpanParserInter get(String key){
         return mapper.get(key);
     }

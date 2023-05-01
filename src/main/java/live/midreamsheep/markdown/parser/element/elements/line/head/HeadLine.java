@@ -6,10 +6,10 @@ import live.midreamsheep.markdown.parser.element.elements.line.LineElementType;
 /**
  * 标题节点
  * @author midreamsheep
- * @see live.midreamsheep.markdown.parser.element.elements.line.head.HeadParser
- * @see live.midreamsheep.markdown.parser.element.elements.line.head.HeadLevel
  * @since 2023/5/1
  * @version 1.0
+ * @see live.midreamsheep.markdown.parser.element.elements.line.head.HeadParser
+ * @see live.midreamsheep.markdown.parser.element.elements.line.head.HeadLevel
  * */
 public class HeadLine extends MarkdownLineElement {
     private HeadLevel level;

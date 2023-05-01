@@ -5,7 +5,21 @@ import live.midreamsheep.markdown.parser.element.elements.span.spans.Span;
 import live.midreamsheep.markdown.parser.element.elements.span.spans.SpanParserInter;
 import live.midreamsheep.markdown.parser.element.elements.span.spans.bold.BoldSpan;
 
+/**
+ * 删除线行内格式解析器，用于解析~~删除线~~格式的行内格式
+ * @author midreamsheep
+ * @since 2023/5/1
+ * @version 1.0
+ * @see live.midreamsheep.markdown.parser.element.elements.span.spans.strikethrough.StrikethroughSpan
+ * @see live.midreamsheep.markdown.parser.element.elements.span.spans.SpanParserInter
+ * @see live.midreamsheep.markdown.parser.element.elements.span.spans.SpanParserMapper
+ * */
 public class StrikethroughParser implements SpanParserInter {
+    /**
+     * 处理删除线
+     * 由于删除线格式中可以包含其他行内格式，所以需要使用递归解析
+     * 例如~~**删除线加粗**~~
+     * */
     @Override
     public int parse(char[] chars, int i, Span span) {
         if(chars[i] == '~' && chars[i+1] == '~'){

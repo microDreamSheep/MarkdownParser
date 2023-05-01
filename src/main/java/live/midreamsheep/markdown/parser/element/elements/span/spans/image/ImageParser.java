@@ -5,7 +5,22 @@ import live.midreamsheep.markdown.parser.element.elements.span.spans.SpanParserI
 import live.midreamsheep.markdown.parser.element.elements.span.spans.link.LinkSpan;
 import live.midreamsheep.markdown.parser.tool.str.MarkdownParserStringUntil;
 
+/**
+ * 图片行内格式对象解析器
+ * @author midreamsheep
+ * @since 2023/5/1
+ * @version 1.0
+ * @see live.midreamsheep.markdown.parser.element.elements.span.spans.image.ImageSpan
+ * @see live.midreamsheep.markdown.parser.element.elements.span.spans.SpanParserMapper
+ * */
 public class ImageParser implements SpanParserInter {
+
+    /**
+     * 解析图片行内格式对象
+     * 解析格式为 ![alt](url)
+     * alt为图片的替代文本，url为图片的链接
+     * 图片为叶子节点，不需要递归解析
+     * */
     @Override
     public int parse(char[] chars, int i, Span span) {
         StringBuilder displayName = new StringBuilder();

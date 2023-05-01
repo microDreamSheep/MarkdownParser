@@ -4,7 +4,20 @@ import live.midreamsheep.markdown.parser.element.elements.span.spans.Span;
 import live.midreamsheep.markdown.parser.element.elements.span.spans.SpanParserInter;
 import live.midreamsheep.markdown.parser.tool.str.MarkdownParserStringUntil;
 
+/**
+ * Link行内格式对象解析器
+ * @author midreamsheep
+ * @since 2023/5/1
+ * @version 1.0
+ * @see live.midreamsheep.markdown.parser.element.elements.span.spans.link.LinkSpan
+ * @see live.midreamsheep.markdown.parser.element.elements.span.spans.SpanParserMapper
+ * */
 public class LinkParser implements SpanParserInter {
+    /**
+     * 解析方法
+     * 用于解析的格式为[display](url "title") "title"为可选内容
+     * link为叶子节点，不需要递归解析
+     * */
     @Override
     public int parse(char[] chars, int i, Span span) {
         StringBuilder name = new StringBuilder();

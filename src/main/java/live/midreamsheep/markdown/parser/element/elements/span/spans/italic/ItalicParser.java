@@ -3,8 +3,15 @@ package live.midreamsheep.markdown.parser.element.elements.span.spans.italic;
 import live.midreamsheep.markdown.parser.element.elements.span.SpanParser;
 import live.midreamsheep.markdown.parser.element.elements.span.spans.Span;
 import live.midreamsheep.markdown.parser.element.elements.span.spans.SpanParserInter;
-import live.midreamsheep.markdown.parser.element.elements.span.spans.bold.BoldSpan;
 
+/**
+ * 斜体解析器
+ * @author midreamsheep
+ * @since 2023/5/1
+ * @version 1.0
+ * @see live.midreamsheep.markdown.parser.element.elements.span.spans.italic.ItalicSpan
+ * @see live.midreamsheep.markdown.parser.element.elements.span.spans.SpanParserMapper
+ * */
 public class ItalicParser implements SpanParserInter {
     @Override
     public int parse(char[] chars, int i, Span span) {
