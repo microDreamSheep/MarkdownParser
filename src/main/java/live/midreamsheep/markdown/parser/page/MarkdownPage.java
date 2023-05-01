@@ -1,9 +1,9 @@
 package live.midreamsheep.markdown.parser.page;
 
-import live.midreamsheep.markdown.parser.element.MarkdownLineElement;
+import live.midreamsheep.markdown.parser.element.elements.line.MarkdownLineElement;
 import live.midreamsheep.markdown.parser.element.elements.line.MarkdownLineParserInter;
 import live.midreamsheep.markdown.parser.element.elements.line.MarkdownLineParserMapper;
-import live.midreamsheep.markdown.parser.element.elements.line.sdandard.Standard;
+import live.midreamsheep.markdown.parser.element.elements.line.standard.Standard;
 import live.midreamsheep.markdown.parser.element.elements.span.SpanParser;
 import live.midreamsheep.markdown.parser.element.elements.span.spans.Span;
 import live.midreamsheep.markdown.parser.element.elements.span.spans.str.StandardSpan;

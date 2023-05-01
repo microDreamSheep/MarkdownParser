@@ -1,9 +1,21 @@
 package live.midreamsheep.markdown.parser.element.elements.line.horizontal;
 
-import live.midreamsheep.markdown.parser.element.MarkdownLineElement;
+import live.midreamsheep.markdown.parser.element.elements.line.MarkdownLineElement;
 import live.midreamsheep.markdown.parser.element.elements.line.LineElementType;
 import live.midreamsheep.markdown.parser.element.elements.span.spans.Span;
 
+/**
+ * 分割线类型
+ * 分割线格式为：
+ *      ---
+ *      ***
+ *      ___
+ * 解析器由lambda表达式实现，不需要单独的解析器
+ * @see live.midreamsheep.markdown.parser.element.elements.line.MarkdownLineParserMapper
+ * @author midreamsheep
+ * @since 2023/5/1
+ * @version 1.0
+ * */
 public class HorizontalLine extends MarkdownLineElement {
 
     @Override
@@ -11,13 +23,18 @@ public class HorizontalLine extends MarkdownLineElement {
         return LineElementType.HORIZONTAL;
     }
 
+    /**
+     * 分割线没有内容，返回null
+     * 重写父类方法返回null
+     * @return null
+     * */
     @Override
-    public Span getContent() {
-        return super.getContent();
-    }
+    public Span getContent() {return null;}
 
+    /**
+     * 分割线没有内容，不需要设置内容
+     * 重写父类方法留空
+     * */
     @Override
-    public void setContent(Span content) {
-        super.setContent(content);
-    }
+    public void setContent(Span content) {}
 }
