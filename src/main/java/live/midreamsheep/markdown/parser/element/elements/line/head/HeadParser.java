@@ -4,6 +4,7 @@ import live.midreamsheep.markdown.parser.element.elements.line.MarkdownLineEleme
 import live.midreamsheep.markdown.parser.element.elements.line.MarkdownLineParserInter;
 import live.midreamsheep.markdown.parser.element.elements.span.SpanParser;
 import live.midreamsheep.markdown.parser.element.elements.span.spans.Span;
+import live.midreamsheep.markdown.parser.page.MarkdownPages;
 
 import java.util.List;
 
@@ -29,7 +30,7 @@ public class HeadParser implements MarkdownLineParserInter {
      * @see live.midreamsheep.markdown.parser.element.elements.span.SpanParser
      * */
     @Override
-    public int parse(String[] lines, int index, List<MarkdownLineElement> elements) {
+    public int parse(String[] lines, int index, MarkdownPages elements) {
         String line = lines[index];
         for (int i = 0; i < line.trim().toCharArray().length; i++) {
             if(line.charAt(i) != '#'){
@@ -38,7 +39,7 @@ public class HeadParser implements MarkdownLineParserInter {
                 head.setLevel(HeadLevel.getHeadLevel(i));
                 SpanParser.parse(line.substring(i),span);
                 head.setContent(span);
-                elements.add(head);
+                elements.addNewLine(head);
                 return index;
             }
         }

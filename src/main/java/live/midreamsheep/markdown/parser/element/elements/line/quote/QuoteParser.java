@@ -3,6 +3,7 @@ package live.midreamsheep.markdown.parser.element.elements.line.quote;
 import live.midreamsheep.markdown.parser.element.elements.line.MarkdownLineElement;
 import live.midreamsheep.markdown.parser.element.elements.line.MarkdownLineParserInter;
 import live.midreamsheep.markdown.parser.page.MarkdownPage;
+import live.midreamsheep.markdown.parser.page.MarkdownPages;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -25,7 +26,7 @@ public class QuoteParser implements MarkdownLineParserInter {
      *引用行内部可以包含任意类型的行，本身是一个独立的页面，将会在行解析完后交给PageParser解析
      * */
     @Override
-    public int parse(String[] lines, int index, List<MarkdownLineElement> elements) {
+    public int parse(String[] lines, int index, MarkdownPages elements) {
         int result = index;
         List<String> lineList = new LinkedList<>();
         while (result < lines.length){
@@ -44,7 +45,7 @@ public class QuoteParser implements MarkdownLineParserInter {
             MarkdownPage subPage = new MarkdownPage();
             QuoteLine quote = new QuoteLine(subPage);
             subPage.parse(lineList.toArray(new String[0]));
-            elements.add(quote);
+            elements.addNewLine(quote);
         }
         return result-1;
     }

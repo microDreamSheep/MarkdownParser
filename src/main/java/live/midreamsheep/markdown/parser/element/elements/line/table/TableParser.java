@@ -4,6 +4,7 @@ import live.midreamsheep.markdown.parser.element.elements.line.MarkdownLineEleme
 import live.midreamsheep.markdown.parser.element.elements.line.MarkdownLineParserInter;
 import live.midreamsheep.markdown.parser.element.elements.span.SpanParser;
 import live.midreamsheep.markdown.parser.element.elements.span.spans.Span;
+import live.midreamsheep.markdown.parser.page.MarkdownPages;
 
 import java.util.List;
 
@@ -26,7 +27,7 @@ public class TableParser implements MarkdownLineParserInter {
      *  3.解析表格内容
      * */
     @Override
-    public int parse(String[] lines, int index, List<MarkdownLineElement> elements) {
+    public int parse(String[] lines, int index, MarkdownPages elements) {
         //解析表格头
         String line = lines[index].trim();
         if (line.length() < 3 || line.charAt(0) != '|' || line.charAt(line.length() - 1) != '|') {
@@ -55,7 +56,7 @@ public class TableParser implements MarkdownLineParserInter {
         //解析表格内容
         index++;
         index = parseBody(tableLine,lines,index);
-        elements.add(tableLine);
+        elements.addNewLine(tableLine);
         return index;
     }
     /**

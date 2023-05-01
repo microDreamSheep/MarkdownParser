@@ -4,6 +4,7 @@ import live.midreamsheep.markdown.parser.element.elements.line.MarkdownLineEleme
 import live.midreamsheep.markdown.parser.element.elements.line.MarkdownLineParserInter;
 import live.midreamsheep.markdown.parser.element.elements.span.spans.Span;
 import live.midreamsheep.markdown.parser.element.elements.span.spans.str.StandardSpan;
+import live.midreamsheep.markdown.parser.page.MarkdownPages;
 
 import java.util.List;
 
@@ -24,7 +25,7 @@ public class CodeParser implements MarkdownLineParserInter {
      * ```
      * */
     @Override
-    public int parse(String[] lines, int index, List<MarkdownLineElement> elements) {
+    public int parse(String[] lines, int index, MarkdownPages elements) {
         String startLine = lines[index];
         if(startLine.trim().startsWith("```")){
             CodeLine code = new CodeLine(startLine.replace("```", ""));
@@ -38,7 +39,7 @@ public class CodeParser implements MarkdownLineParserInter {
                 }
                 span.addChildSpan(new StandardSpan(line));
             }
-            elements.add(code);
+            elements.addNewLine(code);
             return i;
         }
         return -1;

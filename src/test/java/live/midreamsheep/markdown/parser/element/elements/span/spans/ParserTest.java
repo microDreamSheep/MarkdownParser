@@ -1,17 +1,14 @@
 package live.midreamsheep.markdown.parser.element.elements.span.spans;
 
 import live.midreamsheep.markdown.parser.MarkdownParser;
-import live.midreamsheep.markdown.parser.element.elements.line.MarkdownLineElement;
 import live.midreamsheep.markdown.parser.page.MarkdownPage;
+import live.midreamsheep.markdown.parser.page.MarkdownPages;
 import org.junit.Test;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.List;
 
 public class ParserTest {
     @Test
@@ -24,6 +21,6 @@ public class ParserTest {
         }
         String markdown = sb.toString();
         MarkdownPage page = MarkdownParser.parse(markdown);
-        List<MarkdownLineElement> elements = page.getElements();
+        MarkdownPages elements = page.getPages();
     }
 }
