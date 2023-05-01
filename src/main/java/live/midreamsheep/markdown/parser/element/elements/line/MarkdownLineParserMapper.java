@@ -3,6 +3,8 @@ package live.midreamsheep.markdown.parser.element.elements.line;
 import live.midreamsheep.markdown.parser.element.elements.line.code.CodeParser;
 import live.midreamsheep.markdown.parser.element.elements.line.head.HeadParser;
 import live.midreamsheep.markdown.parser.element.elements.line.horizontal.HorizontalLine;
+import live.midreamsheep.markdown.parser.element.elements.line.quote.QuoteParser;
+import live.midreamsheep.markdown.parser.element.elements.line.table.TableParser;
 import live.midreamsheep.markdown.parser.tool.str.MarkdownParserStringUntil;
 
 import java.util.HashMap;
@@ -37,7 +39,8 @@ public class MarkdownLineParserMapper {
 
     static{
         //注册解析器
-
+        register("|", new TableParser());
+        register(">", new QuoteParser());
         register("#", new HeadParser());
         register("`", new CodeParser());
         //分割线类型
