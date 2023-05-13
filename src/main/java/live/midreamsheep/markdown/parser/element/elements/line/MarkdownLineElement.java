@@ -14,7 +14,7 @@ import live.midreamsheep.markdown.parser.element.elements.span.spans.Span;
  * */
 public abstract class MarkdownLineElement {
 
-    protected final LineElementType type;
+    protected LineElementType type;
 
     protected Span content;
 

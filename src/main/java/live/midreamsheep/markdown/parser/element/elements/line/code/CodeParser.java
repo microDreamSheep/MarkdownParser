@@ -29,15 +29,13 @@ public class CodeParser implements MarkdownLineParserInter {
         String startLine = lines[index];
         if(startLine.trim().startsWith("```")){
             CodeLine code = new CodeLine(startLine.replace("```", ""));
-            Span span = new Span();
-            code.setContent(span);
             int i = index+1;
             for (; i < lines.length; i++) {
                 String line = lines[i];
                 if(line.trim().startsWith("```")){
                     break;
                 }
-                span.addChildSpan(new StandardSpan(line));
+                elements.addNewLine(new CodeDataLine(new StandardSpan(line),code));
             }
             elements.addNewLine(code);
             return i;

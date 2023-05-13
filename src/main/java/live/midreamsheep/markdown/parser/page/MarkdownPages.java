@@ -17,7 +17,6 @@ public class MarkdownPages {
 
     private final List<MarkdownLineElement> elements = new LinkedList<>();
 
-    @Deprecated
     public List<MarkdownLineElement> getElements() {
         return elements;
     }
