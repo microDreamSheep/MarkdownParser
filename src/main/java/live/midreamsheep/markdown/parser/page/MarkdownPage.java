@@ -1,11 +1,11 @@
 package live.midreamsheep.markdown.parser.page;
 
-import live.midreamsheep.markdown.parser.element.elements.line.MarkdownLineParserInter;
-import live.midreamsheep.markdown.parser.element.elements.line.MarkdownLineParserMapper;
-import live.midreamsheep.markdown.parser.element.elements.line.standard.Standard;
-import live.midreamsheep.markdown.parser.element.elements.span.SpanParser;
-import live.midreamsheep.markdown.parser.element.elements.span.spans.Span;
-import live.midreamsheep.markdown.parser.element.elements.span.spans.str.StandardSpan;
+import live.midreamsheep.markdown.parser.element.line.MarkdownLineParserInter;
+import live.midreamsheep.markdown.parser.element.line.MarkdownLineParserMapper;
+import live.midreamsheep.markdown.parser.element.line.standard.Standard;
+import live.midreamsheep.markdown.parser.element.span.SpanParser;
+import live.midreamsheep.markdown.parser.element.span.Span;
+import live.midreamsheep.markdown.parser.element.span.str.StandardSpan;
 
 /**
  * 一个markdown解析的页面，由多个行元素组成，每个行元素由多个span组成，每个span由多个字符组成
@@ -23,8 +23,8 @@ public class MarkdownPage {
      *     4. 解析器解析后返回下一行的行号
      *     5. 重复2-4
      * @param lines markdown文本
-     *              @see live.midreamsheep.markdown.parser.element.elements.line.MarkdownLineParserInter
-     *              @see live.midreamsheep.markdown.parser.element.elements.line.MarkdownLineParserMapper
+     *              @see MarkdownLineParserInter
+     *              @see MarkdownLineParserMapper
      * elements在集合中的顺序即为markdown的行号
      * */
     public void parse(String[] lines){

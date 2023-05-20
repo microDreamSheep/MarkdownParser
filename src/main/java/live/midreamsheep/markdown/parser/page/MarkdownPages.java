@@ -1,6 +1,6 @@
 package live.midreamsheep.markdown.parser.page;
 
-import live.midreamsheep.markdown.parser.element.elements.line.MarkdownLineElement;
+import live.midreamsheep.markdown.parser.element.line.MarkdownLineElement;
 
 import java.util.LinkedList;
 import java.util.List;

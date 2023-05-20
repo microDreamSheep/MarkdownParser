@@ -1,6 +1,7 @@
 package live.midreamsheep.markdown.parser.element.elements.span.spans.bold;
 
-import live.midreamsheep.markdown.parser.element.elements.span.spans.Span;
+import live.midreamsheep.markdown.parser.element.span.Span;
+import live.midreamsheep.markdown.parser.element.span.bold.BoldParser;
 import org.junit.Test;
 
 public class BoldParserTest {
