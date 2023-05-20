@@ -13,7 +13,7 @@ import java.nio.file.Paths;
 public class ParserTest {
     @Test
     public void parserTest() throws IOException {
-        InputStream is = Files.newInputStream(Paths.get(""));
+        InputStream is = Files.newInputStream(Paths.get("D:\\mine\\临时文件\\test.md"));
         StringBuilder sb = new StringBuilder();
         int ch;
         while ((ch = is.read()) != -1) {

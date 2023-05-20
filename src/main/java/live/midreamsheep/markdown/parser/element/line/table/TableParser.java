@@ -1,5 +1,6 @@
 package live.midreamsheep.markdown.parser.element.line.table;
 
+import live.midreamsheep.markdown.parser.element.line.LineElementType;
 import live.midreamsheep.markdown.parser.element.line.MarkdownLineParserInter;
 import live.midreamsheep.markdown.parser.element.span.SpanParser;
 import live.midreamsheep.markdown.parser.element.span.Span;
@@ -31,29 +32,33 @@ public class TableParser implements MarkdownLineParserInter {
             return -1;
         }
         TableLine tableLine = new TableLine();
-        tableLine.setTableHeads(parseSpan(line.substring(1, line.length() - 1).split("\\|")));
+        TableData data = new TableData(parseSpan(line.substring(1, line.length() - 1).split("\\|")), LineElementType.TABLE_HEAD);
+        tableLine.setTableHeads(data);
         index++;
         if(lines.length <= index){
             return -1;
         }
+
         //解析表格规则
         line = lines[index].trim();
         if (line.length() < 3 || line.charAt(0) != '|' || line.charAt(line.length() - 1) != '|') {
             return -1;
         }
         String[] tableRules = line.substring(1, line.length() - 1).split("\\|");
-        if(tableRules.length != tableLine.getTableHeads().length){
+        if(tableRules.length != tableLine.getTableHeads().getLength()){
             return -1;
         }
-        TableRules[] tableRule = new TableRules[tableRules.length];
-        if(parseTableRules(tableRule,tableRules) == -1){
+        TableRule tableRule = new TableRule();
+        if(!tableRule.parseTableRules(tableRules)){
             return -1;
         }
         tableLine.setTableRules(tableRule);
+
         //解析表格内容
+        elements.addNewLine(data);
+        elements.addNewLine(tableRule);
         index++;
-        index = parseBody(tableLine,lines,index);
-        elements.addNewLine(tableLine);
+        index = parseBody(tableLine,lines,index,elements);
         return index;
     }
     /**
@@ -69,51 +74,25 @@ public class TableParser implements MarkdownLineParserInter {
         return tableHead;
     }
     /**
-     * 解析表格规则
-     * @param tableRule 表格规则数组
-     * @param tableRules 表格规则文本数组
-     *                   表格规则文本格式：
-     *                     1. --------- 左对齐
-     *                     2. :--------: 居中对齐
-     *                     3. --------: 右对齐
-     *                     4. :--------  左对齐
-     * @return 解析成功返回1，解析失败返回-1
-     * */
-    private int parseTableRules(TableRules[] tableRule,String[] tableRules){
-        for (int i = 0; i < tableRules.length; i++) {
-            String rule = tableRules[i].trim();
-            if (rule.length() == 0) {
-                return -1;
-            }else if(rule.startsWith(":")&&rule.endsWith(":")&&rule.contains("-")) {
-                tableRule[i] = TableRules.CENTER;
-            }else if(rule.startsWith(":")&&rule.endsWith("-")) {
-                tableRule[i] = TableRules.LEFT;
-            }else if(rule.startsWith("-")&&rule.endsWith(":")) {
-                tableRule[i] = TableRules.RIGHT;
-            }else{
-                tableRule[i] = TableRules.LEFT;
-            }
-        }
-        return 1;
-    }
-    /**
      * 解析表格内容
      * @param tableLine 表格行类型
      * @param lines 将要解析的文本
      * @param index 解析开始的行数
      * @return 解析结束的行数
      * */
-    private int parseBody(TableLine tableLine, String[] lines, int index) {
+    private int parseBody(TableLine tableLine, String[] lines, int index,MarkdownPages elements){
         for (int i = index; i < lines.length; i++) {
             String line = lines[i].trim();
             if (line.length() < 3 || line.charAt(0) != '|' || line.charAt(line.length() - 1) != '|') {
                 break;
             }
             String[] tableBody = line.substring(1, line.length() - 1).split("\\|");
-            if(tableBody.length != tableLine.getTableHeads().length){
+            if(tableBody.length != tableLine.getTableHeads().getLength()){
                 break;
             }
-            if(!tableLine.addTableBody(parseSpan(tableBody))){
+            TableData data = new TableData(parseSpan(tableBody), LineElementType.TABLE_BODY);
+            elements.addNewLine(data);
+            if(!tableLine.addTableBody(data)){
                 break;
             }
             index++;

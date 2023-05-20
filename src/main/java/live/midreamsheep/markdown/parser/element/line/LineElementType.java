@@ -25,6 +25,7 @@ public enum LineElementType {
     CODE_DATA(8),
     TABLE_HEAD(9),
     TABLE_BODY(10),
+    TABLE_ROW(11),
     ;
     private final int type;
 

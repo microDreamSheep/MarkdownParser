@@ -17,9 +17,9 @@ import java.util.List;
  * */
 public class TableLine extends MarkdownLineElement {
 
-    private Span[] tableHeads;
-    private TableRules[] tableRules;
-    private List<Span[]> tableBody;
+    private TableData tableHeads;
+    private TableRule tableRule;
+    private List<TableData> tableBody;
     @Override
     protected LineElementType SetType() {
         return LineElementType.TABLE;
@@ -27,28 +27,28 @@ public class TableLine extends MarkdownLineElement {
     /**
      * 表格头构造器
      * 将会通过表格头的数量来确定表格规则和下面行数据的数量
-     * @param tableHeads 表格头
+     * @param tableHead 表格头 内部枚举类型为TableData<br/>
+     *                  存储表格头的数据为Span对象,用于后期渲染<br/>
+     *
      * */
-    public void setTableHeads(Span[] tableHeads) {
-        int size = tableHeads.length;
-        this.tableHeads = tableHeads;
-        tableRules = new TableRules[size];
+    public void setTableHeads(TableData tableHead) {
+        this.tableHeads = tableHead;
         tableBody = new ArrayList<>();
     }
     /**
      * 表格规则构造器
-     * @param tableRules 表格规则
+     * @param tableRule 表格规则
      * */
-    public void setTableRules(TableRules[] tableRules) {
-        this.tableRules = tableRules;
+    public void setTableRules(TableRule tableRule) {
+        this.tableRule = tableRule;
     }
     /**
      * 表格内容构造器
      * @param tableBody 表格内容
      *                  表格内容的数量必须和表格头的数量相同
      * */
-    public boolean addTableBody(Span[] tableBody) {
-        if (tableBody.length != tableHeads.length) {
+    public boolean addTableBody(TableData tableBody) {
+        if (tableBody.getLength() != tableHeads.getLength()) {
             return false;
         }
         this.tableBody.add(tableBody);
@@ -56,14 +56,14 @@ public class TableLine extends MarkdownLineElement {
     }
 
 
-    public Span[] getTableHeads() {
+    public TableData getTableHeads() {
         return tableHeads;
     }
-    public TableRules[] getTableRules() {
-        return tableRules;
+    public TableRule getTableRules() {
+        return tableRule;
     }
 
-    public List<Span[]> getTableBody() {
+    public List<TableData> getTableBody() {
         return tableBody;
     }
 }

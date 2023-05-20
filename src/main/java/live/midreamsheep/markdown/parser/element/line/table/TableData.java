@@ -2,15 +2,32 @@ package live.midreamsheep.markdown.parser.element.line.table;
 
 import live.midreamsheep.markdown.parser.element.line.LineElementType;
 import live.midreamsheep.markdown.parser.element.line.MarkdownLineElement;
+import live.midreamsheep.markdown.parser.element.span.Span;
 
 public class TableData extends MarkdownLineElement {
 
+    private Span[] data;
+
+    public int getLength() {
+        return data.length;
+    }
+
+    public Span[] getData() {
+        return data;
+    }
+
+    public void setData(Span[] data) {
+        this.data = data;
+    }
+
+    public TableData(Span[] data,LineElementType type) {
+        super();
+        setData(data);
+        this.type = type==null?LineElementType.TABLE_BODY:type;
+    }
+
     @Override
     protected LineElementType SetType() {
-        return null;
-    }
-    public TableData(LineElementType type) {
-        super();
-        this.type = type==null?LineElementType.TABLE_BODY:type;
+        return LineElementType.TABLE_HEAD;
     }
 }
