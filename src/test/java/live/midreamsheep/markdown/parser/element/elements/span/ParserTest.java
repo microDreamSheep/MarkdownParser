@@ -1,4 +1,4 @@
-package live.midreamsheep.markdown.parser.element.elements.span.spans;
+package live.midreamsheep.markdown.parser.element.elements.span;
 
 import live.midreamsheep.markdown.parser.MarkdownParser;
 import live.midreamsheep.markdown.parser.page.MarkdownPage;

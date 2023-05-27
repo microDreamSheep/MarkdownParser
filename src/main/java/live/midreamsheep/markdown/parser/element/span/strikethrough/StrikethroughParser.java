@@ -33,7 +33,7 @@ public class StrikethroughParser implements SpanParserInter {
         while (j < chars.length){
             if(chars[j] == '~' && chars[j+1] == '~'){
                 //找到了
-                BoldSpan boldSpan = new BoldSpan();
+                StrikethroughSpan boldSpan = new StrikethroughSpan();
                 SpanParser.parse(new String(chars, i, j - i), boldSpan);
                 span.addChildSpan(boldSpan);
                 return j+1;
