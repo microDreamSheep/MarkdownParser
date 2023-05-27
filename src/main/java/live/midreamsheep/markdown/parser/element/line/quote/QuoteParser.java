@@ -1,5 +1,7 @@
 package live.midreamsheep.markdown.parser.element.line.quote;
 
+import live.midreamsheep.markdown.parser.element.line.LineElementType;
+import live.midreamsheep.markdown.parser.element.line.MarkdownLineElement;
 import live.midreamsheep.markdown.parser.element.line.MarkdownLineParserInter;
 import live.midreamsheep.markdown.parser.page.MarkdownPage;
 import live.midreamsheep.markdown.parser.page.MarkdownPages;
@@ -30,22 +32,37 @@ public class QuoteParser implements MarkdownLineParserInter {
         List<String> lineList = new LinkedList<>();
         while (result < lines.length){
             char[] chars = lines[result].trim().toCharArray();
-            if(!((chars.length > 2 && chars[0] == '>'&&chars[1] == ' ')||(chars.length == 1&&chars[0] == '>'))){
+            boolean isStartWithQuote = ((chars.length > 2 && chars[0] == '>'&&chars[1] == ' ')||(chars.length == 1&&chars[0] == '>'));
+            if(!(isStartWithQuote)){
                 break;
             }
+            result++;
             if(lines[result].trim().length()>2) {
                 lineList.add(lines[result].trim().substring(2));
-            }else{
-                lineList.add("");
+                continue;
             }
-            result++;
+            lineList.add("");
         }
-        if(lineList.size() > 0){
-            MarkdownPage subPage = new MarkdownPage();
-            QuoteLine quote = new QuoteLine(subPage);
-            subPage.parse(lineList.toArray(new String[0]));
-            elements.addNewLine(quote);
+        if(lineList.size() == 0){
+            return -1;
         }
+        MarkdownPage markdownPage = new MarkdownPage();
+        markdownPage.parse(lineList.toArray(new String[0]));
+        setQuote(elements,markdownPage.getPages().getElements());
         return result-1;
+    }
+    //计算引用的层级
+    private void setQuote(MarkdownPages rootPage,List<MarkdownLineElement> elements){
+        for (MarkdownLineElement element : elements) {
+            QuoteLine quoteLine = new QuoteLine();
+            int level = 1;
+            if(element.getType() == LineElementType.QUOTE){
+                QuoteLine quote = (QuoteLine) element;
+                level = quote.getLevel()+1;
+            }
+            quoteLine.setLevel(level);
+            quoteLine.setElement(element);
+            rootPage.addNewLine(quoteLine);
+        }
     }
 }

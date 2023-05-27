@@ -2,6 +2,7 @@ package live.midreamsheep.markdown.parser.element.line.quote;
 
 import live.midreamsheep.markdown.parser.element.line.LineElementType;
 import live.midreamsheep.markdown.parser.element.line.MarkdownLineElement;
+import live.midreamsheep.markdown.parser.element.span.Span;
 import live.midreamsheep.markdown.parser.page.MarkdownPage;
 
 /**
@@ -16,19 +17,38 @@ import live.midreamsheep.markdown.parser.page.MarkdownPage;
  * */
 public class QuoteLine extends MarkdownLineElement {
 
-    private final MarkdownPage page;
+    private MarkdownLineElement line;
+
+    private MarkdownPage page;
+
+    private int level;
+
     @Override
     protected LineElementType SetType() {
         return LineElementType.QUOTE;
     }
-    /**
-     *引用行内部可以包含任意类型的行，本身是一个独立的页面，将会在行解析完后交给PageParser解析
-     * @param page 引用行内部的页面
-     * */
-    public QuoteLine(MarkdownPage page) {
-        this.page = page;
+
+    public MarkdownLineElement getLineElement() {
+        return line;
     }
+
+    public void setElement(MarkdownLineElement line) {
+        this.line = line;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
     public MarkdownPage getPage() {
         return page;
+    }
+
+    public void setPage(MarkdownPage page) {
+        this.page = page;
     }
 }
