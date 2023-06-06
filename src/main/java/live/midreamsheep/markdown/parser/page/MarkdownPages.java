@@ -1,6 +1,7 @@
 package live.midreamsheep.markdown.parser.page;
 
 import live.midreamsheep.markdown.parser.element.line.MarkdownLineElement;
+import live.midreamsheep.markdown.parser.element.line.mapper.LineTypeFunction;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -34,11 +35,16 @@ public class MarkdownPages {
     }
 
     public void removeLine(int lineNumber){
+        MarkdownLineElement markdownLineElement = elements.get(lineNumber-1);
+        if(LineTypeFunction.isSingleLine(markdownLineElement.getType())){
+            elements.remove(lineNumber-1);
+        }
+
         elements.remove(lineNumber);
     }
 
     public void removeLine(MarkdownLineElement element){
-        elements.remove(element);
+        removeLine(elements.indexOf(element)+1);
     }
 
 }

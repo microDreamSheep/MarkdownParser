@@ -23,6 +23,7 @@ public enum LineElementType {
     HORIZONTAL(6),
     STANDARD(7),
     CODE_DATA(8),
+
     TABLE_HEAD(9),
     TABLE_BODY(10),
     TABLE_ROW(11),

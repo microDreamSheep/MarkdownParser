@@ -30,6 +30,8 @@ public class CodeParser implements MarkdownLineParserInter {
             for (; i < lines.length; i++) {
                 String line = lines[i];
                 if(line.trim().startsWith("```")){
+                    CodeLine endLine = new CodeLine(line);
+                    elements.addNewLine(endLine);
                     break;
                 }
                 elements.addNewLine(new CodeDataLine(new StandardSpan(line),code));
