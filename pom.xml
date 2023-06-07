@@ -21,6 +21,15 @@
             <version>4.13.1</version>
             <scope>test</scope>
         </dependency>
+        <!--lombok-->
+        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.24</version>
+            <scope>compile</scope>
+        </dependency>
+
     </dependencies>
 
 </project>

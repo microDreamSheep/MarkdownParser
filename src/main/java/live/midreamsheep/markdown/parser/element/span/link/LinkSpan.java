@@ -2,6 +2,9 @@ package live.midreamsheep.markdown.parser.element.span.link;
 
 import live.midreamsheep.markdown.parser.element.span.Span;
 import live.midreamsheep.markdown.parser.element.span.SpanElementType;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
@@ -14,6 +17,9 @@ import java.util.List;
  * @version 1.0
  * @see LinkParser
  * */
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class LinkSpan extends Span {
 
     private String url;
@@ -21,7 +27,7 @@ public class LinkSpan extends Span {
     private String display;
     @Override
     protected SpanElementType setType() {
-        return SpanElementType.IMAGE;
+        return SpanElementType.LINK;
     }
 
     @Override
@@ -34,27 +40,4 @@ public class LinkSpan extends Span {
         return null;
     }
 
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getDisplay() {
-        return display;
-    }
-
-    public void setDisplay(String display) {
-        this.display = display;
-    }
 }

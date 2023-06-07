@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="markdown_parser:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/markdown_parser_jar</output-path>
+    <root id="archive" name="markdown_parser.jar">
+      <element id="module-output" name="markdown_parser" />
+    </root>
+  </artifact>
+</component>

@@ -36,7 +36,7 @@ public class LinkParser implements SpanParserInter {
         if(url.contains(" ")){
             String temp = url.substring(url.indexOf(" ")+1);
             if(temp.contains("\"")){
-                title = temp.substring(temp.indexOf("\""), temp.lastIndexOf("\""));
+                title = temp.substring(temp.indexOf("\"")+1, temp.lastIndexOf("\""));
                 url = url.substring(0, url.indexOf(" "));
             }
         }

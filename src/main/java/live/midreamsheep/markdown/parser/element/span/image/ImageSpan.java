@@ -2,6 +2,9 @@ package live.midreamsheep.markdown.parser.element.span.image;
 
 import live.midreamsheep.markdown.parser.element.span.Span;
 import live.midreamsheep.markdown.parser.element.span.SpanElementType;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
@@ -15,6 +18,9 @@ import java.util.List;
  * @version 1.0
  * @see ImageParser
  * */
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class ImageSpan extends Span{
 
     private String url;
@@ -32,22 +38,6 @@ public class ImageSpan extends Span{
     @Override
     public List<Span> getChildSpans() {
         return null;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 
 }
