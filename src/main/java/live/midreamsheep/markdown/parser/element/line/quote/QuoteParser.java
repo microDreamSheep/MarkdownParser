@@ -3,8 +3,8 @@ package live.midreamsheep.markdown.parser.element.line.quote;
 import live.midreamsheep.markdown.parser.element.line.LineElementType;
 import live.midreamsheep.markdown.parser.element.line.MarkdownLineElement;
 import live.midreamsheep.markdown.parser.element.line.MarkdownLineParserInter;
+import live.midreamsheep.markdown.parser.page.MarkdownParser;
 import live.midreamsheep.markdown.parser.page.MarkdownPage;
-import live.midreamsheep.markdown.parser.page.MarkdownPages;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -15,7 +15,7 @@ import java.util.List;
  * @since 2023/5/1
  * @version 1.0
  * @see QuoteLine
- * @see MarkdownPage
+ * @see MarkdownParser
  * */
 public class QuoteParser implements MarkdownLineParserInter {
 
@@ -27,7 +27,7 @@ public class QuoteParser implements MarkdownLineParserInter {
      *引用行内部可以包含任意类型的行，本身是一个独立的页面，将会在行解析完后交给PageParser解析
      * */
     @Override
-    public int parse(String[] lines, int index, MarkdownPages elements) {
+    public int parse(String[] lines, int index, MarkdownPage elements) {
         int result = index;
         List<String> lineList = new LinkedList<>();
         while (result < lines.length){
@@ -46,13 +46,12 @@ public class QuoteParser implements MarkdownLineParserInter {
         if(lineList.size() == 0){
             return -1;
         }
-        MarkdownPage markdownPage = new MarkdownPage();
-        markdownPage.parse(lineList.toArray(new String[0]));
-        setQuote(elements,markdownPage.getPages().getElements());
+        MarkdownParser markdownPage = new MarkdownParser();
+        setQuote(elements,markdownPage.parse(lineList.toArray(new String[0])).getElements());
         return result-1;
     }
     //计算引用的层级
-    private void setQuote(MarkdownPages rootPage,List<MarkdownLineElement> elements){
+    private void setQuote(MarkdownPage rootPage, List<MarkdownLineElement> elements){
         for (MarkdownLineElement element : elements) {
             QuoteLine quoteLine = new QuoteLine();
             int level = 1;

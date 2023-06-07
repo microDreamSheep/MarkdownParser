@@ -2,8 +2,7 @@ package live.midreamsheep.markdown.parser.element.line.quote;
 
 import live.midreamsheep.markdown.parser.element.line.LineElementType;
 import live.midreamsheep.markdown.parser.element.line.MarkdownLineElement;
-import live.midreamsheep.markdown.parser.element.span.Span;
-import live.midreamsheep.markdown.parser.page.MarkdownPage;
+import live.midreamsheep.markdown.parser.page.MarkdownParser;
 
 /**
  * 引用行类型，以>开头的行，表示引用内容
@@ -19,7 +18,7 @@ public class QuoteLine extends MarkdownLineElement {
 
     private MarkdownLineElement line;
 
-    private MarkdownPage page;
+    private MarkdownParser page;
 
     private int level;
 
@@ -44,11 +43,11 @@ public class QuoteLine extends MarkdownLineElement {
         this.level = level;
     }
 
-    public MarkdownPage getPage() {
+    public MarkdownParser getPage() {
         return page;
     }
 
-    public void setPage(MarkdownPage page) {
+    public void setPage(MarkdownParser page) {
         this.page = page;
     }
 }

@@ -1,14 +1,15 @@
 package live.midreamsheep.markdown.parser.element.elements.span;
 
-import live.midreamsheep.markdown.parser.MarkdownParser;
+import live.midreamsheep.markdown.parser.page.MarkdownParser;
 import live.midreamsheep.markdown.parser.page.MarkdownPage;
-import live.midreamsheep.markdown.parser.page.MarkdownPages;
+import live.midreamsheep.markdown.parser.tool.str.MarkdownParserStringUntil;
 import org.junit.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Arrays;
 
 public class ParserTest {
     @Test
@@ -20,8 +21,7 @@ public class ParserTest {
             sb.append((char) ch);
         }
         String markdown = sb.toString();
-        MarkdownPage page = MarkdownParser.parse(markdown);
-        MarkdownPages elements = page.getPages();
+
 
     }
 }

@@ -4,7 +4,8 @@ import live.midreamsheep.markdown.parser.element.line.LineElementType;
 import live.midreamsheep.markdown.parser.element.line.MarkdownLineParserInter;
 import live.midreamsheep.markdown.parser.element.span.SpanParser;
 import live.midreamsheep.markdown.parser.element.span.Span;
-import live.midreamsheep.markdown.parser.page.MarkdownPages;
+import live.midreamsheep.markdown.parser.page.MarkdownPage;
+import live.midreamsheep.markdown.parser.tool.str.MarkdownParserStringUntil;
 
 /**
  * 表格数据解析器，将表格数据解析为表格行类型
@@ -25,14 +26,14 @@ public class TableParser implements MarkdownLineParserInter {
      *  3.解析表格内容
      * */
     @Override
-    public int parse(String[] lines, int index, MarkdownPages elements) {
+    public int parse(String[] lines, int index, MarkdownPage elements) {
         //解析表格头
         String line = lines[index].trim();
         if (line.length() < 3 || line.charAt(0) != '|' || line.charAt(line.length() - 1) != '|') {
             return -1;
         }
         TableLine tableLine = new TableLine();
-        TableData data = new TableData(parseSpan(line.substring(1, line.length() - 1).split("\\|")), LineElementType.TABLE_HEAD);
+        TableData data = new TableData(parseSpan(MarkdownParserStringUntil.split(line.substring(1, line.length() - 1),'|')), LineElementType.TABLE_HEAD);
         tableLine.setTableHeads(data);
         index++;
         if(lines.length <= index){
@@ -44,7 +45,7 @@ public class TableParser implements MarkdownLineParserInter {
         if (line.length() < 3 || line.charAt(0) != '|' || line.charAt(line.length() - 1) != '|') {
             return -1;
         }
-        String[] tableRules = line.substring(1, line.length() - 1).split("\\|");
+        String[] tableRules = MarkdownParserStringUntil.split(line.substring(1, line.length() - 1),'|');
         if(tableRules.length != tableLine.getTableHeads().getLength()){
             return -1;
         }
@@ -80,13 +81,13 @@ public class TableParser implements MarkdownLineParserInter {
      * @param index 解析开始的行数
      * @return 解析结束的行数
      * */
-    private int parseBody(TableLine tableLine, String[] lines, int index,MarkdownPages elements){
+    private int parseBody(TableLine tableLine, String[] lines, int index, MarkdownPage elements){
         for (int i = index; i < lines.length; i++) {
             String line = lines[i].trim();
             if (line.length() < 3 || line.charAt(0) != '|' || line.charAt(line.length() - 1) != '|') {
                 break;
             }
-            String[] tableBody = line.substring(1, line.length() - 1).split("\\|");
+            String[] tableBody = MarkdownParserStringUntil.split(line.substring(1, line.length() - 1),'|');
             if(tableBody.length != tableLine.getTableHeads().getLength()){
                 break;
             }

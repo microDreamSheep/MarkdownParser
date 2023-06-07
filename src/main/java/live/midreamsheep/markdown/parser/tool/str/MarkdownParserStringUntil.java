@@ -1,5 +1,8 @@
 package live.midreamsheep.markdown.parser.tool.str;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 字符串工具类
  * @author midreamsheep
@@ -57,5 +60,38 @@ public class MarkdownParserStringUntil {
             }
         }
         return true;
+    }
+    /**
+     * 字符串按行切割
+     * @param content 字符串
+     * @return 切割后的字符串数组
+     * @see #split(String, char)
+     * */
+    public static String[] split(String content){
+        return split(content,'\n');
+    }
+    /**
+     * 字符串切割
+     * 当字符串中有多个分隔符时，将字符串切割为多个子字符串，当重复出现时，用空字符串代替
+     * @param content 字符串
+     * @param c 分隔符.例如：split("1  2  3",' ')将返回["1","","2","","3"]<br/>
+     *          如果存在多个连续的分隔符，将会被切割为多个空字符串，如：split("1\n\n\n2")将返回["1","","","2"]
+     * @return 切割后的字符串数组
+     * */
+    public static String[] split(String content,char c){
+        List<String> list = new ArrayList<>();
+        //对str根据c分割，当多个c连续出现时，用空字符串代替
+        char[] chars = content.toCharArray();
+        int start = 0;
+        for (int i = 0; i < chars.length; i++) {
+            if(chars[i]==c){
+                list.add(start==i?"":content.substring(start,i));
+                start = i+1;
+            }
+        }
+        if (start-1!=chars.length){
+            list.add(content.substring(start));
+        }
+        return list.toArray(new String[0]);
     }
 }

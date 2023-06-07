@@ -2,7 +2,7 @@ package live.midreamsheep.markdown.parser.element.line.code;
 
 import live.midreamsheep.markdown.parser.element.line.MarkdownLineParserInter;
 import live.midreamsheep.markdown.parser.element.span.str.StandardSpan;
-import live.midreamsheep.markdown.parser.page.MarkdownPages;
+import live.midreamsheep.markdown.parser.page.MarkdownPage;
 
 /**
  * 代码块类型解析器
@@ -21,7 +21,7 @@ public class CodeParser implements MarkdownLineParserInter {
      * ```
      * */
     @Override
-    public int parse(String[] lines, int index, MarkdownPages elements) {
+    public int parse(String[] lines, int index, MarkdownPage elements) {
         String startLine = lines[index];
         if(startLine.trim().startsWith("```")){
             CodeLine code = new CodeLine(startLine.replace("```", ""));

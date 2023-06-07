@@ -1,6 +1,6 @@
 package live.midreamsheep.markdown.parser.element.line;
 
-import live.midreamsheep.markdown.parser.page.MarkdownPages;
+import live.midreamsheep.markdown.parser.page.MarkdownPage;
 
 /**
  * 解析行对象接口
@@ -20,5 +20,5 @@ public interface MarkdownLineParserInter {
      * @param elements 放入解析结果
      * @return 下一次解析的行数，用于解析多行元素
      * */
-    int parse(String[] lines, int index, MarkdownPages elements);
+    int parse(String[] lines, int index, MarkdownPage elements);
 }

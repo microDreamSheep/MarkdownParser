@@ -1,8 +1,8 @@
 package live.midreamsheep.markdown.parser.element.line.mapper;
 
-import live.midreamsheep.markdown.parser.page.MarkdownPages;
+import live.midreamsheep.markdown.parser.page.MarkdownPage;
 
 @FunctionalInterface
 public interface RemoveFunctionInterface {
-    void remove(MarkdownPages page, int index);
+    void remove(MarkdownPage page, int index);
 }

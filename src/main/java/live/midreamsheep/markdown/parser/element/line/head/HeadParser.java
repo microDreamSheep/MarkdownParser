@@ -3,7 +3,7 @@ package live.midreamsheep.markdown.parser.element.line.head;
 import live.midreamsheep.markdown.parser.element.line.MarkdownLineParserInter;
 import live.midreamsheep.markdown.parser.element.span.SpanParser;
 import live.midreamsheep.markdown.parser.element.span.Span;
-import live.midreamsheep.markdown.parser.page.MarkdownPages;
+import live.midreamsheep.markdown.parser.page.MarkdownPage;
 
 /**
  * 标题类型解析器
@@ -27,7 +27,7 @@ public class HeadParser implements MarkdownLineParserInter {
      * @see SpanParser
      * */
     @Override
-    public int parse(String[] lines, int index, MarkdownPages elements) {
+    public int parse(String[] lines, int index, MarkdownPage elements) {
         String line = lines[index];
         for (int i = 0; i < line.trim().toCharArray().length; i++) {
             if(line.charAt(i) != '#'){
