@@ -1,7 +1,7 @@
 package live.midreamsheep.markdown.parser.element.line.mapper;
 
 import live.midreamsheep.markdown.parser.element.line.LineElementType;
-import live.midreamsheep.markdown.parser.element.line.MarkdownLineElement;
+import live.midreamsheep.markdown.parser.element.line.MarkdownLine;
 import live.midreamsheep.markdown.parser.element.line.code.CodeDataLine;
 import live.midreamsheep.markdown.parser.element.line.standard.Standard;
 import live.midreamsheep.markdown.parser.element.span.str.StandardSpan;
@@ -17,10 +17,10 @@ public class LineTypeFunction {
 
     static {
         removeFunctionMap.put(LineElementType.CODE, (page, index) -> {
-            MarkdownLineElement byIndex = page.getByIndex(index);
+            MarkdownLine byIndex = page.getByIndex(index);
             List<String> contents = new LinkedList<>();
-            for (; index < page.getElements().size(); index++) {
-                MarkdownLineElement data = page.getByIndex(index);
+            for (; index < page.getLines().size(); index++) {
+                MarkdownLine data = page.getByIndex(index);
                 if (data.getType() == LineElementType.CODE_DATA) {
                     contents.add (((StandardSpan) ((CodeDataLine) data).getCodeData()).getContent());
                     page.removeLine(index);

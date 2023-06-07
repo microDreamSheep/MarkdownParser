@@ -1,6 +1,6 @@
 package live.midreamsheep.markdown.parser.element.line.horizontal;
 
-import live.midreamsheep.markdown.parser.element.line.MarkdownLineElement;
+import live.midreamsheep.markdown.parser.element.line.MarkdownLine;
 import live.midreamsheep.markdown.parser.element.line.LineElementType;
 import live.midreamsheep.markdown.parser.element.line.MarkdownLineParserMapper;
 import live.midreamsheep.markdown.parser.element.span.Span;
@@ -17,7 +17,7 @@ import live.midreamsheep.markdown.parser.element.span.Span;
  * @version 1.0
  * @see MarkdownLineParserMapper
  * */
-public class HorizontalLine extends MarkdownLineElement {
+public class HorizontalLine extends MarkdownLine {
 
     @Override
     protected LineElementType SetType() {

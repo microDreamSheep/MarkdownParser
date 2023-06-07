@@ -1,7 +1,7 @@
 package live.midreamsheep.markdown.parser.element.line.quote;
 
 import live.midreamsheep.markdown.parser.element.line.LineElementType;
-import live.midreamsheep.markdown.parser.element.line.MarkdownLineElement;
+import live.midreamsheep.markdown.parser.element.line.MarkdownLine;
 import live.midreamsheep.markdown.parser.page.MarkdownParser;
 
 /**
@@ -14,9 +14,9 @@ import live.midreamsheep.markdown.parser.page.MarkdownParser;
  * @version 1.0
  * @see QuoteParser
  * */
-public class QuoteLine extends MarkdownLineElement {
+public class QuoteLine extends MarkdownLine {
 
-    private MarkdownLineElement line;
+    private MarkdownLine line;
 
     private MarkdownParser page;
 
@@ -27,11 +27,11 @@ public class QuoteLine extends MarkdownLineElement {
         return LineElementType.QUOTE;
     }
 
-    public MarkdownLineElement getLineElement() {
+    public MarkdownLine getLineElement() {
         return line;
     }
 
-    public void setElement(MarkdownLineElement line) {
+    public void setElement(MarkdownLine line) {
         this.line = line;
     }
 

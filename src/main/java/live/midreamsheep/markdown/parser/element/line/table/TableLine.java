@@ -1,8 +1,7 @@
 package live.midreamsheep.markdown.parser.element.line.table;
 
 import live.midreamsheep.markdown.parser.element.line.LineElementType;
-import live.midreamsheep.markdown.parser.element.line.MarkdownLineElement;
-import live.midreamsheep.markdown.parser.element.span.Span;
+import live.midreamsheep.markdown.parser.element.line.MarkdownLine;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +14,7 @@ import java.util.List;
  * @see TableParser
  * @see TableRules
  * */
-public class TableLine extends MarkdownLineElement {
+public class TableLine extends MarkdownLine {
 
     private TableData tableHeads;
     private TableRule tableRule;

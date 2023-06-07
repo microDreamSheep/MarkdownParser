@@ -1,6 +1,6 @@
 package live.midreamsheep.markdown.parser.element.line.head;
 
-import live.midreamsheep.markdown.parser.element.line.MarkdownLineElement;
+import live.midreamsheep.markdown.parser.element.line.MarkdownLine;
 import live.midreamsheep.markdown.parser.element.line.LineElementType;
 
 /**
@@ -11,7 +11,7 @@ import live.midreamsheep.markdown.parser.element.line.LineElementType;
  * @see HeadParser
  * @see HeadLevel
  * */
-public class HeadLine extends MarkdownLineElement {
+public class HeadLine extends MarkdownLine {
     private HeadLevel level;
 
     public HeadLevel getLevel() {

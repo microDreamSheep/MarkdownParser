@@ -1,7 +1,7 @@
 package live.midreamsheep.markdown.parser.element.line.quote;
 
 import live.midreamsheep.markdown.parser.element.line.LineElementType;
-import live.midreamsheep.markdown.parser.element.line.MarkdownLineElement;
+import live.midreamsheep.markdown.parser.element.line.MarkdownLine;
 import live.midreamsheep.markdown.parser.element.line.MarkdownLineParserInter;
 import live.midreamsheep.markdown.parser.page.MarkdownParser;
 import live.midreamsheep.markdown.parser.page.MarkdownPage;
@@ -47,12 +47,12 @@ public class QuoteParser implements MarkdownLineParserInter {
             return -1;
         }
         MarkdownParser markdownPage = new MarkdownParser();
-        setQuote(elements,markdownPage.parse(lineList.toArray(new String[0])).getElements());
+        setQuote(elements,markdownPage.parse(lineList.toArray(new String[0])).getLines());
         return result-1;
     }
     //计算引用的层级
-    private void setQuote(MarkdownPage rootPage, List<MarkdownLineElement> elements){
-        for (MarkdownLineElement element : elements) {
+    private void setQuote(MarkdownPage rootPage, List<MarkdownLine> elements){
+        for (MarkdownLine element : elements) {
             QuoteLine quoteLine = new QuoteLine();
             int level = 1;
             if(element.getType() == LineElementType.QUOTE){

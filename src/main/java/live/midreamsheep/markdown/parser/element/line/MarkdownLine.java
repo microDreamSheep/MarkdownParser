@@ -12,7 +12,7 @@ import live.midreamsheep.markdown.parser.element.span.Span;
  * @see MarkdownLineParserMapper
  * @see MarkdownLineParserInter
  * */
-public abstract class MarkdownLineElement {
+public abstract class MarkdownLine {
 
     protected LineElementType type;
 
@@ -22,7 +22,7 @@ public abstract class MarkdownLineElement {
      * 默认构造器
      * 调用抽象方法SetType()方法设置type
      * */
-    protected MarkdownLineElement() {
+    protected MarkdownLine() {
         type = SetType();
     }
     /**

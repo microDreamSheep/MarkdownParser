@@ -1,7 +1,7 @@
 package live.midreamsheep.markdown.parser.element.line.code;
 
 import live.midreamsheep.markdown.parser.element.line.LineElementType;
-import live.midreamsheep.markdown.parser.element.line.MarkdownLineElement;
+import live.midreamsheep.markdown.parser.element.line.MarkdownLine;
 import live.midreamsheep.markdown.parser.element.span.Span;
 import live.midreamsheep.markdown.parser.element.span.str.StandardSpan;
 
@@ -14,7 +14,7 @@ import live.midreamsheep.markdown.parser.element.span.str.StandardSpan;
  * @see CodeLine
  * @version 1.0
  * */
-public class CodeDataLine extends MarkdownLineElement {
+public class CodeDataLine extends MarkdownLine {
 
     private final StandardSpan codeData;
     private final CodeLine parentCodeLine;

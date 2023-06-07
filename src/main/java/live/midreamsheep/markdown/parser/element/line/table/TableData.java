@@ -1,10 +1,10 @@
 package live.midreamsheep.markdown.parser.element.line.table;
 
 import live.midreamsheep.markdown.parser.element.line.LineElementType;
-import live.midreamsheep.markdown.parser.element.line.MarkdownLineElement;
+import live.midreamsheep.markdown.parser.element.line.MarkdownLine;
 import live.midreamsheep.markdown.parser.element.span.Span;
 
-public class TableData extends MarkdownLineElement {
+public class TableData extends MarkdownLine {
 
     private Span[] data;
 

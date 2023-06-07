@@ -1,6 +1,6 @@
 package live.midreamsheep.markdown.parser.element.line.code;
 
-import live.midreamsheep.markdown.parser.element.line.MarkdownLineElement;
+import live.midreamsheep.markdown.parser.element.line.MarkdownLine;
 import live.midreamsheep.markdown.parser.element.line.LineElementType;
 
 /**
@@ -10,7 +10,7 @@ import live.midreamsheep.markdown.parser.element.line.LineElementType;
  * @see CodeParser
  * @version 1.0
  * */
-public class CodeLine extends MarkdownLineElement {
+public class CodeLine extends MarkdownLine {
 
     private final String codeType;
 

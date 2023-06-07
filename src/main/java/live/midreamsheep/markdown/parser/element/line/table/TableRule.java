@@ -1,9 +1,9 @@
 package live.midreamsheep.markdown.parser.element.line.table;
 
 import live.midreamsheep.markdown.parser.element.line.LineElementType;
-import live.midreamsheep.markdown.parser.element.line.MarkdownLineElement;
+import live.midreamsheep.markdown.parser.element.line.MarkdownLine;
 
-public class TableRule extends MarkdownLineElement {
+public class TableRule extends MarkdownLine {
 
     private TableRules[] rules;
 
