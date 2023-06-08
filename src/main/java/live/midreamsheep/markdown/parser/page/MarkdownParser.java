@@ -1,10 +1,11 @@
 package live.midreamsheep.markdown.parser.page;
 
+import live.midreamsheep.markdown.parser.element.line.LineElementType;
+import live.midreamsheep.markdown.parser.element.line.mapper.MarkdownHandlerMapper;
+import live.midreamsheep.markdown.parser.element.line.mapper.MarkdownLineHandlerInter;
 import live.midreamsheep.markdown.parser.element.line.mapper.parser.MarkdownLineParserInter;
 import live.midreamsheep.markdown.parser.element.line.mapper.parser.MarkdownLineParserMapper;
 import live.midreamsheep.markdown.parser.element.line.standard.Standard;
-import live.midreamsheep.markdown.parser.element.span.SpanParser;
-import live.midreamsheep.markdown.parser.element.span.Span;
 import live.midreamsheep.markdown.parser.element.span.str.StandardSpan;
 import live.midreamsheep.markdown.parser.tool.str.MarkdownParserStringUntil;
 
@@ -35,24 +36,33 @@ public class MarkdownParser {
     public MarkdownPage parse(String[] contents){
         MarkdownPage page = new MarkdownPage();
         for (int i = 0; i < contents.length; i++) {
+
             //获取首个非空字符
             if(contents[i].trim().equals("")){
                 page.addNewLine(new Standard(new StandardSpan(contents[i])));//空行
                 continue;
             }
             char firstChar = contents[i].trim().charAt(0);
-            MarkdownLineParserInter markdownLineParserInter = MarkdownLineParserMapper.get(String.valueOf(firstChar));
-            if(markdownLineParserInter == null){
-                page.addNewLine(new Standard(SpanParser.parse(contents[i],new Span())));
-                continue;
+            //获取对应的解析器
+            MarkdownLineHandlerInter markdownLineParserInter = MarkdownHandlerMapper.get(LineElementType.STANDARD);
+            for (MarkdownLineHandlerInter lineParserInter : MarkdownLineParserMapper.get(String.valueOf(firstChar))) {
+                if(!lineParserInter.isMatch(contents[i])){
+                    continue;
+                }
+                markdownLineParserInter = lineParserInter;
+                break;
             }
-            int result = MarkdownLineParserMapper.get(String.valueOf(firstChar)).parse(contents, i,page);
+            //解析
+            int result = markdownLineParserInter.parse(contents, i,page);
+            //结果为-1则说明解析失败，将其作为标准行解析
             if(result==-1){
-                page.addNewLine(new Standard(SpanParser.parse(contents[i],new Span())));
+                MarkdownHandlerMapper.get(LineElementType.STANDARD).parse(contents,i,page);
                 continue;
             }
+            //解析成功，将行号移动到解析成功的行
             i = result;
         }
+
         return page;
     }
 
