@@ -46,7 +46,7 @@ public class MarkdownParser {
             //获取对应的解析器
             MarkdownLineHandlerInter markdownLineParserInter = MarkdownHandlerMapper.get(LineElementType.STANDARD);
             for (MarkdownLineHandlerInter lineParserInter : MarkdownLineParserMapper.get(String.valueOf(firstChar))) {
-                if(!lineParserInter.isMatch(contents[i])){
+                if(!lineParserInter.isMatch(contents,i,page)){
                     continue;
                 }
                 markdownLineParserInter = lineParserInter;

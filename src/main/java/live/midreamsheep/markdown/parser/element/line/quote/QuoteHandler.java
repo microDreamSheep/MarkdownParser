@@ -71,7 +71,7 @@ public class QuoteHandler implements MarkdownLineHandlerInter {
     }
 
     @Override
-    public boolean isMatch(String line) {
+    public boolean isMatch(String[] lines, int index, MarkdownPage page) {
         //TODO
         return false;
     }

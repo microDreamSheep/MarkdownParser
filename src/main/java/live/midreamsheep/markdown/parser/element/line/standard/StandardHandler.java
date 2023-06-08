@@ -13,7 +13,7 @@ public class StandardHandler extends MarkdownStandardDelete {
     }
 
     @Override
-    public boolean isMatch(String line) {
+    public boolean isMatch(String[] lines, int index, MarkdownPage page) {
         return true;
     }
 }

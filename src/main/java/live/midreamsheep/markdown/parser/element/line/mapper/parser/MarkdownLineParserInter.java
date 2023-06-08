@@ -10,7 +10,6 @@ import live.midreamsheep.markdown.parser.page.MarkdownPage;
  * @version 1.0
  * @see MarkdownLineParserMapper
  * */
-@FunctionalInterface
 public interface MarkdownLineParserInter {
 
     /**
@@ -21,4 +20,5 @@ public interface MarkdownLineParserInter {
      * @return 下一次解析的行数，用于解析多行元素
      * */
     int parse(String[] lines, int index, MarkdownPage page);
+    boolean isMatch(String[] lines,int index, MarkdownPage page);
 }
