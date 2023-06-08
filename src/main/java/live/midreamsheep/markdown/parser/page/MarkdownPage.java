@@ -40,12 +40,7 @@ public class MarkdownPage {
 
 
     public void removeLine(int lineNumber){
-        MarkdownLine markdownLineElement = lines.get(lineNumber-1);
-        if(LineTypeFunction.isSingleLine(markdownLineElement.getType())){
-            lines.remove(lineNumber-1);
-        }
-
-        lines.remove(lineNumber-1);
+        //TODO
     }
 
     public void removeLine(MarkdownLine element){

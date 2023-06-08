@@ -7,7 +7,7 @@ package live.midreamsheep.markdown.parser.element.line.table;
  * @author midreamsheep
  * @since 2023/5/1
  * @version 1.0
- * @see TableParser
+ * @see TableHandler
  * @see TableLine
  * */
 public enum TableRules {

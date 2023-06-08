@@ -5,8 +5,8 @@ import live.midreamsheep.markdown.parser.element.line.mapper.update.delete.Markd
 import live.midreamsheep.markdown.parser.element.line.code.CodeHandler;
 import live.midreamsheep.markdown.parser.element.line.head.HeadHandler;
 import live.midreamsheep.markdown.parser.element.line.horizontal.HorizontalLine;
-import live.midreamsheep.markdown.parser.element.line.quote.QuoteParser;
-import live.midreamsheep.markdown.parser.element.line.table.TableParser;
+import live.midreamsheep.markdown.parser.element.line.quote.QuoteHandler;
+import live.midreamsheep.markdown.parser.element.line.table.TableHandler;
 import live.midreamsheep.markdown.parser.tool.str.MarkdownParserStringUntil;
 
 import java.util.HashMap;
@@ -51,8 +51,8 @@ public class MarkdownLineParserMapper {
 
     static{
         //注册解析器
-        register("|", new TableParser());
-        register(">", new QuoteParser());
+        register("|", new TableHandler());
+        register(">", new QuoteHandler());
         register("#", new HeadHandler());
         register("`", new CodeHandler());
         //分割线类型

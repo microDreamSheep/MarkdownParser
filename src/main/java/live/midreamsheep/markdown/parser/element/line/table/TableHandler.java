@@ -3,7 +3,6 @@ package live.midreamsheep.markdown.parser.element.line.table;
 import live.midreamsheep.markdown.parser.element.line.LineElementType;
 import live.midreamsheep.markdown.parser.element.line.MarkdownLine;
 import live.midreamsheep.markdown.parser.element.line.mapper.MarkdownLineHandlerInter;
-import live.midreamsheep.markdown.parser.element.line.mapper.parser.MarkdownLineParserInter;
 import live.midreamsheep.markdown.parser.element.span.SpanParser;
 import live.midreamsheep.markdown.parser.element.span.Span;
 import live.midreamsheep.markdown.parser.page.MarkdownPage;
@@ -20,7 +19,7 @@ import java.util.List;
  * @see TableLine
  * @see TableRules
  * */
-public class TableParser implements MarkdownLineHandlerInter {
+public class TableHandler implements MarkdownLineHandlerInter {
 
     /**
      * 具体解析方法
@@ -108,5 +107,11 @@ public class TableParser implements MarkdownLineHandlerInter {
     @Override
     public void delete(int line, List<MarkdownLine> lines) {
         //TODO
+    }
+
+    @Override
+    public boolean isMatch(String line) {
+        //TODO
+        return false;
     }
 }

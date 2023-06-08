@@ -11,7 +11,7 @@ import java.util.List;
  * @author midreamsheep
  * @since 2023/5/1
  * @version 1.0
- * @see TableParser
+ * @see TableHandler
  * @see TableRules
  * */
 public class TableLine extends MarkdownLine {

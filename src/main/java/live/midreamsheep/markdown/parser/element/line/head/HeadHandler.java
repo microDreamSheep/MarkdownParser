@@ -43,4 +43,10 @@ public class HeadHandler extends MarkdownStandardDelete {
         }
         return -1;
     }
+
+    @Override
+    public boolean isMatch(String line) {
+        //TODO
+        return false;
+    }
 }

@@ -49,4 +49,10 @@ public class CodeHandler implements MarkdownLineHandlerInter {
     public void delete(int line, List<MarkdownLine> lines) {
         //TODO
     }
+
+    @Override
+    public boolean isMatch(String line) {
+        //TODO
+        return false;
+    }
 }

@@ -12,7 +12,7 @@ import live.midreamsheep.markdown.parser.page.MarkdownParser;
  * @author midreamsheep
  * @since 2023/5/1
  * @version 1.0
- * @see QuoteParser
+ * @see QuoteHandler
  * */
 public class QuoteLine extends MarkdownLine {
 

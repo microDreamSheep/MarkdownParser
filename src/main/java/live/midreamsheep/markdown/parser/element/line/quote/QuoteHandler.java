@@ -3,7 +3,6 @@ package live.midreamsheep.markdown.parser.element.line.quote;
 import live.midreamsheep.markdown.parser.element.line.LineElementType;
 import live.midreamsheep.markdown.parser.element.line.MarkdownLine;
 import live.midreamsheep.markdown.parser.element.line.mapper.MarkdownLineHandlerInter;
-import live.midreamsheep.markdown.parser.element.line.mapper.parser.MarkdownLineParserInter;
 import live.midreamsheep.markdown.parser.page.MarkdownParser;
 import live.midreamsheep.markdown.parser.page.MarkdownPage;
 
@@ -18,7 +17,7 @@ import java.util.List;
  * @see QuoteLine
  * @see MarkdownParser
  * */
-public class QuoteParser implements MarkdownLineHandlerInter {
+public class QuoteHandler implements MarkdownLineHandlerInter {
 
     /**
      * 解析引用行
@@ -69,5 +68,11 @@ public class QuoteParser implements MarkdownLineHandlerInter {
     @Override
     public void delete(int line, List<MarkdownLine> lines) {
         //TODO
+    }
+
+    @Override
+    public boolean isMatch(String line) {
+        //TODO
+        return false;
     }
 }
