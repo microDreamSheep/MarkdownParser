@@ -4,6 +4,8 @@ import live.midreamsheep.markdown.parser.element.line.code.CodeLine;
 import live.midreamsheep.markdown.parser.element.line.head.HeadLine;
 import live.midreamsheep.markdown.parser.element.line.horizontal.HorizontalLine;
 import live.midreamsheep.markdown.parser.element.line.standard.Standard;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 
 /**
  * 行元素类型枚举类
@@ -14,28 +16,31 @@ import live.midreamsheep.markdown.parser.element.line.standard.Standard;
  * @see HorizontalLine
  * @see Standard
  * */
+@AllArgsConstructor
+@Getter
 public enum LineElementType {
-    HEAD(1),
-    CODE(2),
-    QUOTE(3),
-    LIST(4),
-    TABLE(5),
-    HORIZONTAL(6),
-    STANDARD(7),
-    CODE_DATA(8),
+    HEAD(1, "HEAD"),
+    STANDARD(7,"STANDARD"),
+    HORIZONTAL(6,"HORIZONTAL"),
 
-    TABLE_HEAD(9),
-    TABLE_BODY(10),
-    TABLE_ROW(11),
+    QUOTE(3,"QUOTE"),
+    LIST(4,"LIST"),
+
+    CODE(2,"CODE"),
+    CODE_DATA(8,"CODE_DATA"),
+
+    TABLE(5,"TABLE"),
+    TABLE_HEAD(9,"TABLE_HEAD"),
+    TABLE_BODY(10,"TABLE_BODY"),
+    TABLE_ROW(11,"TABLE_ROW"),
     ;
     private final int type;
+    private final String identifier;
 
     public int getType() {
         return type;
     }
-    LineElementType(int type) {
-        this.type = type;
-    }
+
     public static LineElementType getSpanElementType(int type) {
         for (LineElementType value : LineElementType.values()) {
             if (value.getType() == type) {

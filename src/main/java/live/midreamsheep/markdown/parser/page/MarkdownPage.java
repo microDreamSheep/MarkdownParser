@@ -1,7 +1,6 @@
 package live.midreamsheep.markdown.parser.page;
 
 import live.midreamsheep.markdown.parser.element.line.MarkdownLine;
-import live.midreamsheep.markdown.parser.element.line.mapper.LineTypeFunction;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -29,11 +28,7 @@ public class MarkdownPage {
         return lines.get(lineNumber-1);
     }
 
-
-
-    public void addNewLine(String line){
-
-    }
+    public void addNewLine(String line){}
 
     public void addNewLine(MarkdownLine element){
         addNewLine(lines.size(), element);

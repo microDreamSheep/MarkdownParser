@@ -1,4 +1,4 @@
-package live.midreamsheep.markdown.parser.element.elements.span.link;
+package live.midreamsheep.markdown.parser.element.span.image;
 
 import live.midreamsheep.markdown.parser.element.span.Span;
 import live.midreamsheep.markdown.parser.element.span.SpanElementType;
@@ -6,7 +6,7 @@ import live.midreamsheep.markdown.parser.element.span.link.LinkParser;
 import live.midreamsheep.markdown.parser.element.span.link.LinkSpan;
 import org.junit.Test;
 
-public class LinkParserTest {
+public class ImageParserTest {
     @Test
     public void parseTest() {
         String markdown = "[百度](www.baidu.com)";

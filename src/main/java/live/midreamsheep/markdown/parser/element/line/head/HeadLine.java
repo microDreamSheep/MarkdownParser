@@ -8,7 +8,7 @@ import live.midreamsheep.markdown.parser.element.line.LineElementType;
  * @author midreamsheep
  * @since 2023/5/1
  * @version 1.0
- * @see HeadParser
+ * @see HeadHandler
  * @see HeadLevel
  * */
 public class HeadLine extends MarkdownLine {

@@ -1,11 +1,15 @@
 package live.midreamsheep.markdown.parser.element.line.table;
 
 import live.midreamsheep.markdown.parser.element.line.LineElementType;
-import live.midreamsheep.markdown.parser.element.line.MarkdownLineParserInter;
+import live.midreamsheep.markdown.parser.element.line.MarkdownLine;
+import live.midreamsheep.markdown.parser.element.line.mapper.MarkdownLineHandlerInter;
+import live.midreamsheep.markdown.parser.element.line.mapper.parser.MarkdownLineParserInter;
 import live.midreamsheep.markdown.parser.element.span.SpanParser;
 import live.midreamsheep.markdown.parser.element.span.Span;
 import live.midreamsheep.markdown.parser.page.MarkdownPage;
 import live.midreamsheep.markdown.parser.tool.str.MarkdownParserStringUntil;
+
+import java.util.List;
 
 /**
  * 表格数据解析器，将表格数据解析为表格行类型
@@ -16,7 +20,7 @@ import live.midreamsheep.markdown.parser.tool.str.MarkdownParserStringUntil;
  * @see TableLine
  * @see TableRules
  * */
-public class TableParser implements MarkdownLineParserInter {
+public class TableParser implements MarkdownLineHandlerInter {
 
     /**
      * 具体解析方法
@@ -26,7 +30,7 @@ public class TableParser implements MarkdownLineParserInter {
      *  3.解析表格内容
      * */
     @Override
-    public int parse(String[] lines, int index, MarkdownPage elements) {
+    public int parse(String[] lines, int index, MarkdownPage page) {
         //解析表格头
         String line = lines[index].trim();
         if (line.length() < 3 || line.charAt(0) != '|' || line.charAt(line.length() - 1) != '|') {
@@ -56,10 +60,10 @@ public class TableParser implements MarkdownLineParserInter {
         tableLine.setTableRules(tableRule);
 
         //解析表格内容
-        elements.addNewLine(data);
-        elements.addNewLine(tableRule);
+        page.addNewLine(data);
+        page.addNewLine(tableRule);
         index++;
-        index = parseBody(tableLine,lines,index,elements);
+        index = parseBody(tableLine,lines,index, page);
         return index;
     }
     /**
@@ -81,7 +85,7 @@ public class TableParser implements MarkdownLineParserInter {
      * @param index 解析开始的行数
      * @return 解析结束的行数
      * */
-    private int parseBody(TableLine tableLine, String[] lines, int index, MarkdownPage elements){
+    private int parseBody(TableLine tableLine, String[] lines, int index, MarkdownPage page){
         for (int i = index; i < lines.length; i++) {
             String line = lines[i].trim();
             if (line.length() < 3 || line.charAt(0) != '|' || line.charAt(line.length() - 1) != '|') {
@@ -92,12 +96,17 @@ public class TableParser implements MarkdownLineParserInter {
                 break;
             }
             TableData data = new TableData(parseSpan(tableBody), LineElementType.TABLE_BODY);
-            elements.addNewLine(data);
+            page.addNewLine(data);
             if(!tableLine.addTableBody(data)){
                 break;
             }
             index++;
         }
         return index;
+    }
+
+    @Override
+    public void delete(int line, List<MarkdownLine> lines) {
+        //TODO
     }
 }

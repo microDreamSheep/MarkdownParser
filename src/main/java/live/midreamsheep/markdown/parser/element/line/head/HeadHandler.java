@@ -1,6 +1,7 @@
 package live.midreamsheep.markdown.parser.element.line.head;
 
-import live.midreamsheep.markdown.parser.element.line.MarkdownLineParserInter;
+import live.midreamsheep.markdown.parser.element.line.mapper.parser.MarkdownLineParserInter;
+import live.midreamsheep.markdown.parser.element.line.mapper.update.delete.MarkdownStandardDelete;
 import live.midreamsheep.markdown.parser.element.span.SpanParser;
 import live.midreamsheep.markdown.parser.element.span.Span;
 import live.midreamsheep.markdown.parser.page.MarkdownPage;
@@ -12,7 +13,7 @@ import live.midreamsheep.markdown.parser.page.MarkdownPage;
  * @since 2023/5/1
  * @version 1.0
  * */
-public class HeadParser implements MarkdownLineParserInter {
+public class HeadHandler extends MarkdownStandardDelete {
 
     /**
      * 用于解析标题节点
@@ -27,7 +28,7 @@ public class HeadParser implements MarkdownLineParserInter {
      * @see SpanParser
      * */
     @Override
-    public int parse(String[] lines, int index, MarkdownPage elements) {
+    public int parse(String[] lines, int index, MarkdownPage page) {
         String line = lines[index];
         for (int i = 0; i < line.trim().toCharArray().length; i++) {
             if(line.charAt(i) != '#'){
@@ -36,7 +37,7 @@ public class HeadParser implements MarkdownLineParserInter {
                 head.setLevel(HeadLevel.getHeadLevel(i));
                 SpanParser.parse(line.substring(i),span);
                 head.setContent(span);
-                elements.addNewLine(head);
+                page.addNewLine(head);
                 return index;
             }
         }

@@ -7,7 +7,7 @@ import live.midreamsheep.markdown.parser.element.line.LineElementType;
  * 代码块节点
  * @author midreamsheep
  * @since 2023/5/1
- * @see CodeParser
+ * @see CodeHandler
  * @version 1.0
  * */
 public class CodeLine extends MarkdownLine {

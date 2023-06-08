@@ -1,4 +1,4 @@
-package live.midreamsheep.markdown.parser.element.elements.span.strikethrough;
+package live.midreamsheep.markdown.parser.element.span.strikethrough;
 
 import live.midreamsheep.markdown.parser.element.span.Span;
 import live.midreamsheep.markdown.parser.element.span.SpanElementType;

@@ -2,7 +2,7 @@ package live.midreamsheep.markdown.parser.element.line.horizontal;
 
 import live.midreamsheep.markdown.parser.element.line.MarkdownLine;
 import live.midreamsheep.markdown.parser.element.line.LineElementType;
-import live.midreamsheep.markdown.parser.element.line.MarkdownLineParserMapper;
+import live.midreamsheep.markdown.parser.element.line.mapper.parser.MarkdownLineParserMapper;
 import live.midreamsheep.markdown.parser.element.span.Span;
 
 /**

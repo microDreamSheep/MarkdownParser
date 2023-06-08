@@ -10,7 +10,7 @@ import live.midreamsheep.markdown.parser.element.span.str.StandardSpan;
  * 内部存储代码块内部的数据，为一个标准的StandardSpan对象
  * @author midreamsheep
  * @since 2023/5/13
- * @see CodeParser
+ * @see CodeHandler
  * @see CodeLine
  * @version 1.0
  * */

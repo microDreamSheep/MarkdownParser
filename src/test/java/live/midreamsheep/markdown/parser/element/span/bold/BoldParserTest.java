@@ -1,4 +1,4 @@
-package live.midreamsheep.markdown.parser.element.elements.span.bold;
+package live.midreamsheep.markdown.parser.element.span.bold;
 
 import live.midreamsheep.markdown.parser.element.span.Span;
 import live.midreamsheep.markdown.parser.element.span.SpanElementType;

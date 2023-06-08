@@ -14,7 +14,7 @@ package live.midreamsheep.markdown.parser.element.line.head;
  * @since 2023/5/1
  * @version 1.0
  * @see HeadLine
- * @see HeadParser
+ * @see HeadHandler
  * */
 public enum HeadLevel {
     H1(1),

@@ -2,7 +2,8 @@ package live.midreamsheep.markdown.parser.element.line.quote;
 
 import live.midreamsheep.markdown.parser.element.line.LineElementType;
 import live.midreamsheep.markdown.parser.element.line.MarkdownLine;
-import live.midreamsheep.markdown.parser.element.line.MarkdownLineParserInter;
+import live.midreamsheep.markdown.parser.element.line.mapper.MarkdownLineHandlerInter;
+import live.midreamsheep.markdown.parser.element.line.mapper.parser.MarkdownLineParserInter;
 import live.midreamsheep.markdown.parser.page.MarkdownParser;
 import live.midreamsheep.markdown.parser.page.MarkdownPage;
 
@@ -17,7 +18,7 @@ import java.util.List;
  * @see QuoteLine
  * @see MarkdownParser
  * */
-public class QuoteParser implements MarkdownLineParserInter {
+public class QuoteParser implements MarkdownLineHandlerInter {
 
     /**
      * 解析引用行
@@ -27,7 +28,7 @@ public class QuoteParser implements MarkdownLineParserInter {
      *引用行内部可以包含任意类型的行，本身是一个独立的页面，将会在行解析完后交给PageParser解析
      * */
     @Override
-    public int parse(String[] lines, int index, MarkdownPage elements) {
+    public int parse(String[] lines, int index, MarkdownPage page) {
         int result = index;
         List<String> lineList = new LinkedList<>();
         while (result < lines.length){
@@ -47,12 +48,12 @@ public class QuoteParser implements MarkdownLineParserInter {
             return -1;
         }
         MarkdownParser markdownPage = new MarkdownParser();
-        setQuote(elements,markdownPage.parse(lineList.toArray(new String[0])).getLines());
+        setQuote(page,markdownPage.parse(lineList.toArray(new String[0])).getLines());
         return result-1;
     }
     //计算引用的层级
-    private void setQuote(MarkdownPage rootPage, List<MarkdownLine> elements){
-        for (MarkdownLine element : elements) {
+    private void setQuote(MarkdownPage rootPage, List<MarkdownLine> page){
+        for (MarkdownLine element : page) {
             QuoteLine quoteLine = new QuoteLine();
             int level = 1;
             if(element.getType() == LineElementType.QUOTE){
@@ -63,5 +64,10 @@ public class QuoteParser implements MarkdownLineParserInter {
             quoteLine.setElement(element);
             rootPage.addNewLine(quoteLine);
         }
+    }
+
+    @Override
+    public void delete(int line, List<MarkdownLine> lines) {
+        //TODO
     }
 }

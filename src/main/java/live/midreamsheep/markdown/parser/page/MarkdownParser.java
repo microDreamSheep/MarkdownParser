@@ -1,7 +1,7 @@
 package live.midreamsheep.markdown.parser.page;
 
-import live.midreamsheep.markdown.parser.element.line.MarkdownLineParserInter;
-import live.midreamsheep.markdown.parser.element.line.MarkdownLineParserMapper;
+import live.midreamsheep.markdown.parser.element.line.mapper.parser.MarkdownLineParserInter;
+import live.midreamsheep.markdown.parser.element.line.mapper.parser.MarkdownLineParserMapper;
 import live.midreamsheep.markdown.parser.element.line.standard.Standard;
 import live.midreamsheep.markdown.parser.element.span.SpanParser;
 import live.midreamsheep.markdown.parser.element.span.Span;
@@ -30,7 +30,7 @@ public class MarkdownParser {
      * @param contents markdown文本
      *              @see MarkdownLineParserInter
      *              @see MarkdownLineParserMapper
-     * elements在集合中的顺序即为markdown的行号
+     * page在集合中的顺序即为markdown的行号
      * */
     public MarkdownPage parse(String[] contents){
         MarkdownPage page = new MarkdownPage();
