@@ -1,5 +1,6 @@
 package live.midreamsheep.markdown.parser.element.line.code;
 
+import live.midreamsheep.markdown.parser.element.line.LineElementType;
 import live.midreamsheep.markdown.parser.element.line.MarkdownLine;
 import live.midreamsheep.markdown.parser.element.line.mapper.MarkdownLineHandlerInter;
 import live.midreamsheep.markdown.parser.element.line.mapper.parser.MarkdownLineParserInter;
@@ -44,7 +45,24 @@ public class CodeHandler implements MarkdownLineHandlerInter {
 
     @Override
     public void delete(int line, List<MarkdownLine> lines) {
-        //TODO
+        //TODO 删除代码块
+        MarkdownLine markdownLine = lines.get(line - 1);
+        lines.remove(markdownLine);
+        if (markdownLine.getType()== LineElementType.CODE_DATA){
+            return;
+        }
+        int i = line;
+        for (; i < lines.size(); i++) {
+            MarkdownLine nextLine = lines.get(i);
+            if(nextLine.getType()== LineElementType.CODE_DATA){
+                String content = ((CodeDataLine) nextLine).getCodeData().getContent();
+                lines.remove(nextLine);
+            }else{
+                break;
+            }
+        }
+
+
     }
 
     @Override

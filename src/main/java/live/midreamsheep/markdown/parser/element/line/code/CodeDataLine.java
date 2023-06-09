@@ -29,7 +29,7 @@ public class CodeDataLine extends MarkdownLine {
         this.codeData = codeData;
     }
 
-    public Span getCodeData() {
+    public StandardSpan getCodeData() {
         return codeData;
     }
 
