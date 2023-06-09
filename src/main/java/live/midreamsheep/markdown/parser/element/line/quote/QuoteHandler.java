@@ -50,6 +50,7 @@ public class QuoteHandler implements MarkdownLineHandlerInter {
         setQuote(page,markdownPage.parse(lineList.toArray(new String[0])).getLines());
         return result-1;
     }
+
     //计算引用的层级
     private void setQuote(MarkdownPage rootPage, List<MarkdownLine> page){
         for (MarkdownLine element : page) {
@@ -72,7 +73,6 @@ public class QuoteHandler implements MarkdownLineHandlerInter {
 
     @Override
     public boolean isMatch(String[] lines, int index, MarkdownPage page) {
-        //TODO
-        return false;
+        return lines[index].trim().startsWith(">");
     }
 }

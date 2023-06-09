@@ -20,9 +20,16 @@ public class MarkdownHandlerMapper {
 
     static{
         register(LineElementType.HEAD, new HeadHandler());
+
         register(LineElementType.CODE, new CodeHandler());
-        register(LineElementType.QUOTE, new QuoteHandler());
+        register(LineElementType.CODE_DATA, get(LineElementType.CODE));
+
         register(LineElementType.TABLE, new TableHandler());
+        register(LineElementType.TABLE_HEAD, get(LineElementType.TABLE));
+        register(LineElementType.TABLE_BODY, get(LineElementType.TABLE));
+        register(LineElementType.TABLE_ROW, get(LineElementType.TABLE));
+
+        register(LineElementType.QUOTE, new QuoteHandler());
         register(LineElementType.HORIZONTAL, new HorizontalHandler());
         register(LineElementType.STANDARD, new StandardHandler());
     }

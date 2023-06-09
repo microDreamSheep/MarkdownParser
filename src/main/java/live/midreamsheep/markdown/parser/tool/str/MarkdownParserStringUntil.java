@@ -17,7 +17,7 @@ public class MarkdownParserStringUntil {
      * @param c 字符
      * @return 字符位置，如果没有找到返回-1
      * */
-    private static int findChar(char[] chars,int i,char c){
+    static int findChar(char[] chars, int i, char c){
         for (int i1 = i; i1 < chars.length; i1++) {
             if(chars[i1] == c){
                 return i1;

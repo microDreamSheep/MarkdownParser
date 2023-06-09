@@ -32,9 +32,6 @@ public class TableHandler implements MarkdownLineHandlerInter {
     public int parse(String[] lines, int index, MarkdownPage page) {
         //解析表格头
         String line = lines[index].trim();
-        if (line.length() < 3 || line.charAt(0) != '|' || line.charAt(line.length() - 1) != '|') {
-            return -1;
-        }
         TableLine tableLine = new TableLine();
         TableData data = new TableData(parseSpan(MarkdownParserStringUntil.split(line.substring(1, line.length() - 1),'|')), LineElementType.TABLE_HEAD);
         tableLine.setTableHeads(data);
@@ -45,9 +42,6 @@ public class TableHandler implements MarkdownLineHandlerInter {
 
         //解析表格规则
         line = lines[index].trim();
-        if (line.length() < 3 || line.charAt(0) != '|' || line.charAt(line.length() - 1) != '|') {
-            return -1;
-        }
         String[] tableRules = MarkdownParserStringUntil.split(line.substring(1, line.length() - 1),'|');
         if(tableRules.length != tableLine.getTableHeads().getLength()){
             return -1;
@@ -111,7 +105,10 @@ public class TableHandler implements MarkdownLineHandlerInter {
 
     @Override
     public boolean isMatch(String[] lines, int index, MarkdownPage page) {
-        //TODO
-        return false;
+        String line = lines[index].trim();
+        if (line.length() < 3 || line.charAt(0) != '|' || line.charAt(line.length() - 1) != '|') {
+            return false;
+        }
+        return line.split("\\|").length == lines[index + 1].trim().split("\\|").length;
     }
 }

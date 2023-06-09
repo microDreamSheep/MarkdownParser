@@ -27,22 +27,19 @@ public class CodeHandler implements MarkdownLineHandlerInter {
     @Override
     public int parse(String[] lines, int index, MarkdownPage page) {
         String startLine = lines[index];
-        if(startLine.trim().startsWith("```")){
-            CodeLine code = new CodeLine(startLine.replace("```", ""));
-            page.addNewLine(code);
-            int i = index+1;
-            for (; i < lines.length; i++) {
-                String line = lines[i];
-                if(line.trim().startsWith("```")){
-                    CodeLine endLine = new CodeLine(line);
-                    page.addNewLine(endLine);
-                    break;
-                }
-                page.addNewLine(new CodeDataLine(new StandardSpan(line),code));
+        CodeLine code = new CodeLine(startLine.replace("```", ""));
+        page.addNewLine(code);
+        int i = index+1;
+        for (; i < lines.length; i++) {
+            String line = lines[i];
+            if(line.trim().startsWith("```")){
+                CodeLine endLine = new CodeLine(line);
+                page.addNewLine(endLine);
+                break;
             }
-            return i;
+            page.addNewLine(new CodeDataLine(new StandardSpan(line),code));
         }
-        return -1;
+        return i;
     }
 
     @Override
@@ -52,7 +49,17 @@ public class CodeHandler implements MarkdownLineHandlerInter {
 
     @Override
     public boolean isMatch(String[] lines, int index, MarkdownPage page) {
-        //TODO
-        return true;
+        String line = lines[index];
+        if(!line.trim().startsWith("```")){
+            return false;
+        }
+        //寻找下一个```，如果没有则返回false
+        for (int i = index+1; i < lines.length; i++) {
+            String nextLine = lines[i];
+            if(nextLine.trim().startsWith("```")){
+                return true;
+            }
+        }
+        return false;
     }
 }

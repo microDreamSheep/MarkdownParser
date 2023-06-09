@@ -1,6 +1,7 @@
 package live.midreamsheep.markdown.parser.page;
 
 import live.midreamsheep.markdown.parser.element.line.MarkdownLine;
+import live.midreamsheep.markdown.parser.element.line.mapper.MarkdownHandlerMapper;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -40,22 +41,19 @@ public class MarkdownPage {
 
 
     public void removeLine(int lineNumber){
-        //TODO
+        MarkdownLine markdownLine = lines.get(lineNumber - 1);
+        MarkdownHandlerMapper.get(markdownLine.getType()).delete(lineNumber, lines);
     }
 
     public void removeLine(MarkdownLine element){
         removeLine(lines.indexOf(element)+1);
     }
 
-
-
-
     /**
      * 不建议直接获取lines，建议使用getByIndex()方法获取指定行，要对行进行操作时使用addNewLine()、removeLine()方法
      * 获取页面解析结果
      * @return lines
      * */
-    @Deprecated
     public List<MarkdownLine> getLines() {
         return lines;
     }
