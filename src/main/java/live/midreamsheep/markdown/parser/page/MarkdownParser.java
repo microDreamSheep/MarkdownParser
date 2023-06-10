@@ -18,7 +18,7 @@ import live.midreamsheep.markdown.parser.tool.str.MarkdownParserStringUntil;
 public class MarkdownParser {
 
     public MarkdownPage parse(String content){
-        return parse(MarkdownParserStringUntil.split("\n"));
+        return parse(MarkdownParserStringUntil.split(content));
     }
 
     /**
@@ -39,7 +39,7 @@ public class MarkdownParser {
 
             //获取首个非空字符
             if(contents[i].trim().equals("")){
-                page.addNewLine(new Standard(new StandardSpan(contents[i])));//空行
+                page.addNewLine(new Standard(new StandardSpan(contents[i]),""));//空行
                 continue;
             }
             char firstChar = contents[i].trim().charAt(0);
