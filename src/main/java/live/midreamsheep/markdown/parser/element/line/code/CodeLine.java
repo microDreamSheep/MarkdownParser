@@ -25,9 +25,10 @@ public class CodeLine extends MarkdownLine {
      *                 代码块类型不区分大小写也不包括前后空格,将会统一转为小写<br/>
      *                 例如：new CodeLine("Java ")和new CodeLine("java")效果相同
      * */
-    public CodeLine(String codeType) {
+    public CodeLine(String codeType,String lineContent) {
         //转小写
         this.codeType = codeType.trim().toLowerCase();
+        this.lineContent = lineContent;
     }
 
     public String getCodeType() {

@@ -3,6 +3,7 @@ package live.midreamsheep.markdown.parser.element.line.table;
 import live.midreamsheep.markdown.parser.element.line.LineElementType;
 import live.midreamsheep.markdown.parser.element.line.MarkdownLine;
 import live.midreamsheep.markdown.parser.element.line.mapper.MarkdownLineHandlerInter;
+import live.midreamsheep.markdown.parser.element.line.standard.Standard;
 import live.midreamsheep.markdown.parser.element.span.SpanParser;
 import live.midreamsheep.markdown.parser.element.span.Span;
 import live.midreamsheep.markdown.parser.page.MarkdownPage;
@@ -34,6 +35,7 @@ public class TableHandler implements MarkdownLineHandlerInter {
         String line = lines[index].trim();
         TableLine tableLine = new TableLine();
         TableData data = new TableData(parseSpan(MarkdownParserStringUntil.split(line.substring(1, line.length() - 1),'|')), LineElementType.TABLE_HEAD);
+        data.setLineContent(lines[index]);
         tableLine.setTableHeads(data);
         index++;
         if(lines.length <= index){
@@ -50,6 +52,7 @@ public class TableHandler implements MarkdownLineHandlerInter {
         if(!tableRule.parseTableRules(tableRules)){
             return -1;
         }
+        tableRule.setLineContent(lines[index]);
         tableLine.setTableRules(tableRule);
 
         //解析表格内容
@@ -89,6 +92,7 @@ public class TableHandler implements MarkdownLineHandlerInter {
                 break;
             }
             TableData data = new TableData(parseSpan(tableBody), LineElementType.TABLE_BODY);
+            data.setLineContent(lines[i]);
             page.addNewLine(data);
             if(!tableLine.addTableBody(data)){
                 break;
@@ -100,7 +104,27 @@ public class TableHandler implements MarkdownLineHandlerInter {
 
     @Override
     public void delete(int line, List<MarkdownLine> lines) {
-        //TODO
+        MarkdownLine markdownLine = lines.get(line - 1);
+        if(markdownLine.getType() == LineElementType.TABLE_HEAD||markdownLine.getType() == LineElementType.TABLE_ROW){
+            if(markdownLine.getType() == LineElementType.TABLE_ROW){
+                //删除表格规则及表格内容
+                lines.add(line-2, new Standard(SpanParser.parse(lines.get(line-2).getLineContent(),new Span()),lines.get(line-2).getLineContent()));
+                lines.remove(line-1);
+            }
+            //删除表格头并将表格规则及表格内容转化为普通行
+            lines.remove(line-1);
+            for (int i = line-1; i < lines.size(); i++) {
+                if (lines.get(i).getType() != LineElementType.TABLE_ROW&&lines.get(i).getType() != LineElementType.TABLE_BODY){
+                    break;
+                }
+                lines.add(i, new Standard(SpanParser.parse(lines.get(i).getLineContent(),new Span()),lines.get(i).getLineContent()));
+            }
+            return;
+        }
+        if(markdownLine.getType() == LineElementType.TABLE_BODY){
+            //删除表格内容
+            lines.remove(line-1);
+        }
     }
 
     @Override

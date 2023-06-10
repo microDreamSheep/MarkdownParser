@@ -3,6 +3,10 @@ package live.midreamsheep.markdown.parser.element.line;
 import live.midreamsheep.markdown.parser.element.line.mapper.parser.MarkdownLineParserInter;
 import live.midreamsheep.markdown.parser.element.line.mapper.parser.MarkdownLineParserMapper;
 import live.midreamsheep.markdown.parser.element.span.Span;
+import lombok.AccessLevel;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * 行对象抽象类
@@ -14,11 +18,19 @@ import live.midreamsheep.markdown.parser.element.span.Span;
  * @see MarkdownLineParserMapper
  * @see MarkdownLineParserInter
  * */
+@Getter
+@Setter
 public abstract class MarkdownLine {
 
+    //行类型
+    @Setter(AccessLevel.NONE)
     protected LineElementType type;
 
+    //行内内容
     protected Span content;
+
+    //源内容
+    protected String lineContent;
 
     /**
      * 默认构造器
@@ -33,17 +45,4 @@ public abstract class MarkdownLine {
      * */
     protected abstract LineElementType SetType();
 
-    public LineElementType getType() {
-        return type;
-    }
-
-    public Span getContent() {
-        return content;
-    }
-    /**
-     * 设置行内内容
-     * */
-    public void setContent(Span content) {
-        this.content = content;
-    }
 }

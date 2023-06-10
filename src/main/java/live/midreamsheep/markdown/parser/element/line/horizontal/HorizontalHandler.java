@@ -7,7 +7,7 @@ import live.midreamsheep.markdown.parser.tool.str.MarkdownParserStringUntil;
 public class HorizontalHandler extends MarkdownStandardDelete {
     @Override
     public int parse(String[] lines, int index, MarkdownPage page) {
-        page.addNewLine(new HorizontalLine());
+        page.addNewLine(new HorizontalLine(lines[index]));
         return index+1;
     }
 

@@ -36,6 +36,7 @@ public class HeadHandler extends MarkdownStandardDelete {
                 head.setLevel(HeadLevel.getHeadLevel(i));
                 SpanParser.parse(line.substring(i),span);
                 head.setContent(span);
+                head.setLineContent(line);
                 page.addNewLine(head);
                 return index;
             }

@@ -19,6 +19,10 @@ import live.midreamsheep.markdown.parser.element.span.Span;
  * */
 public class HorizontalLine extends MarkdownLine {
 
+    public HorizontalLine(String lineContent) {
+        this.lineContent = lineContent;
+    }
+
     @Override
     protected LineElementType SetType() {
         return LineElementType.HORIZONTAL;

@@ -24,9 +24,10 @@ public class CodeDataLine extends MarkdownLine {
      * @param codeData 代码块内部数据 用于后期渲染具体数据
      * @param parentLine 父节点 用于后期获取代码渲染类型
      * */
-    public CodeDataLine(StandardSpan codeData, CodeLine parentLine) {
+    public CodeDataLine(StandardSpan codeData, CodeLine parentLine,String lineContent) {
         this.parentCodeLine = parentLine;
         this.codeData = codeData;
+        this.lineContent = lineContent;
     }
 
     public StandardSpan getCodeData() {

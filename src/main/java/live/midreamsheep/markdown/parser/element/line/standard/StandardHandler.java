@@ -8,7 +8,7 @@ import live.midreamsheep.markdown.parser.page.MarkdownPage;
 public class StandardHandler extends MarkdownStandardDelete {
     @Override
     public int parse(String[] lines, int index, MarkdownPage page) {
-        page.addNewLine(new Standard(SpanParser.parse(lines[index],new Span())));
+        page.addNewLine(new Standard(SpanParser.parse(lines[index],new Span()),lines[index]));
         return index+1;
     }
 
