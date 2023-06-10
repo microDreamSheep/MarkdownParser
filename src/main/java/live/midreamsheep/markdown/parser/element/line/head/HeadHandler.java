@@ -47,12 +47,12 @@ public class HeadHandler extends MarkdownStandardDelete {
     public boolean isMatch(String[] lines, int index, MarkdownPage page) {
         String line = lines[index];
         char[] chars = line.toCharArray();
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i <=6; i++) {
+            if(chars.length<=i){
+                return false;
+            }
             if (chars[i] != '#') {
                 return chars[i] == ' ' || chars[i] == '\t';
-            }
-            if (i==chars.length){
-                return true;
             }
         }
         return false;
