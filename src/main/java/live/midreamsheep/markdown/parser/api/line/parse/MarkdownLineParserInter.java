@@ -1,4 +1,4 @@
-package live.midreamsheep.markdown.parser.element.line.mapper.parser;
+package live.midreamsheep.markdown.parser.api.line.parse;
 
 import live.midreamsheep.markdown.parser.page.MarkdownPage;
 
@@ -8,7 +8,6 @@ import live.midreamsheep.markdown.parser.page.MarkdownPage;
  * @author midreamsheep
  * @since 2023/5/1
  * @version 1.0
- * @see MarkdownLineParserMapper
  * */
 public interface MarkdownLineParserInter {
 
@@ -20,5 +19,5 @@ public interface MarkdownLineParserInter {
      * @return 下一次解析的行数，用于解析多行元素
      * */
     int parse(String[] lines, int index, MarkdownPage page);
-    boolean isMatch(String[] lines,int index, MarkdownPage page);
+    boolean isParseMatch(String[] lines, int index, MarkdownPage page);
 }

@@ -1,7 +1,7 @@
 package live.midreamsheep.markdown.parser.page.colletion;
 
 import live.midreamsheep.markdown.parser.api.MarkdownHandlerCollectionAPI;
-import live.midreamsheep.markdown.parser.api.MarkdownLineHandlerInter;
+import live.midreamsheep.markdown.parser.api.line.MarkdownLineHandlerInter;
 import lombok.Getter;
 
 import java.util.ArrayList;

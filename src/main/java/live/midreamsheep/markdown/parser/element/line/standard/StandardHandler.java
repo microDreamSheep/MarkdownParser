@@ -1,6 +1,6 @@
 package live.midreamsheep.markdown.parser.element.line.standard;
 
-import live.midreamsheep.markdown.parser.element.line.mapper.update.delete.MarkdownStandardDelete;
+import live.midreamsheep.markdown.parser.api.line.MarkdownStandardDelete;
 import live.midreamsheep.markdown.parser.element.span.Span;
 import live.midreamsheep.markdown.parser.element.span.SpanParser;
 import live.midreamsheep.markdown.parser.page.MarkdownPage;
@@ -13,7 +13,14 @@ public class StandardHandler extends MarkdownStandardDelete {
     }
 
     @Override
-    public boolean isMatch(String[] lines, int index, MarkdownPage page) {
+    public boolean isParseMatch(String[] lines, int index, MarkdownPage page) {
         return true;
     }
+
+    @Override
+    public boolean update(String content, int index, MarkdownPage page) {
+        page.addNewLine(index,new Standard(SpanParser.parse(content,new Span()),content));
+        return true;
+    }
+
 }

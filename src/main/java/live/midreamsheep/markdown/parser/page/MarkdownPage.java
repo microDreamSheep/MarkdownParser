@@ -1,10 +1,12 @@
 package live.midreamsheep.markdown.parser.page;
 
+import live.midreamsheep.markdown.parser.api.line.MarkdownLineHandlerInter;
 import live.midreamsheep.markdown.parser.element.line.MarkdownLine;
-import live.midreamsheep.markdown.parser.element.line.mapper.MarkdownHandlerMapper;
+import lombok.NoArgsConstructor;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 页面markdown解析结果
@@ -12,9 +14,12 @@ import java.util.List;
  * @since 2023/5/1
  * @version 1.0
  * @see MarkdownLine
- * @see MarkdownParser
  * */
+@NoArgsConstructor
 public class MarkdownPage {
+
+    private Map<Character, List<MarkdownLineHandlerInter>> parseTypeHandler;
+    private List<MarkdownLineHandlerInter> contextTypeHandler;
 
     private final List<MarkdownLine> lines = new LinkedList<>();
 
@@ -42,7 +47,6 @@ public class MarkdownPage {
 
     public void removeLine(int lineNumber){
         MarkdownLine markdownLine = lines.get(lineNumber - 1);
-        MarkdownHandlerMapper.get(markdownLine.getType()).delete(lineNumber, lines);
     }
 
     public void removeLine(MarkdownLine element){
@@ -56,5 +60,10 @@ public class MarkdownPage {
      * */
     public List<MarkdownLine> getLines() {
         return lines;
+    }
+
+    public MarkdownPage(Map<Character, List<MarkdownLineHandlerInter>> parseTypeHandler, List<MarkdownLineHandlerInter> contextTypeHandler) {
+        this.parseTypeHandler = parseTypeHandler;
+        this.contextTypeHandler = contextTypeHandler;
     }
 }

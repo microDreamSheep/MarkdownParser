@@ -1,10 +1,8 @@
 package live.midreamsheep.markdown.parser.element.line;
 
-import live.midreamsheep.markdown.parser.element.line.mapper.parser.MarkdownLineParserInter;
-import live.midreamsheep.markdown.parser.element.line.mapper.parser.MarkdownLineParserMapper;
+import live.midreamsheep.markdown.parser.api.line.parse.MarkdownLineParserInter;
 import live.midreamsheep.markdown.parser.element.span.Span;
 import lombok.AccessLevel;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,7 +13,6 @@ import lombok.Setter;
  * @author midreamsheep
  * @since 2023/5/1
  * @version 1.0
- * @see MarkdownLineParserMapper
  * @see MarkdownLineParserInter
  * */
 @Getter

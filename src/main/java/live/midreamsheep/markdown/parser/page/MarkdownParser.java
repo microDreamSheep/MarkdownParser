@@ -1,11 +1,9 @@
 package live.midreamsheep.markdown.parser.page;
 
-import live.midreamsheep.markdown.parser.element.line.LineElementType;
-import live.midreamsheep.markdown.parser.element.line.mapper.MarkdownHandlerMapper;
-import live.midreamsheep.markdown.parser.api.MarkdownLineHandlerInter;
-import live.midreamsheep.markdown.parser.element.line.mapper.parser.MarkdownLineParserInter;
-import live.midreamsheep.markdown.parser.element.line.mapper.parser.MarkdownLineParserMapper;
+import live.midreamsheep.markdown.parser.api.line.MarkdownLineHandlerInter;
+import live.midreamsheep.markdown.parser.api.line.parse.MarkdownLineParserInter;
 import live.midreamsheep.markdown.parser.element.line.standard.Standard;
+import live.midreamsheep.markdown.parser.element.line.standard.StandardHandler;
 import live.midreamsheep.markdown.parser.element.span.str.StandardSpan;
 import live.midreamsheep.markdown.parser.tool.str.MarkdownParserStringUntil;
 import lombok.AllArgsConstructor;
@@ -20,6 +18,8 @@ import java.util.*;
  * */
 @AllArgsConstructor
 public class MarkdownParser {
+
+    private static final MarkdownLineParserInter STANDARD_PARSER = new StandardHandler();
 
     private Map<Character, List<MarkdownLineHandlerInter>> parseTypeHandler;
     private List<MarkdownLineHandlerInter> contextTypeHandler;
@@ -37,11 +37,10 @@ public class MarkdownParser {
      *     5. 标准形式解析<br/>
      * @param contents markdown文本
      *              @see MarkdownLineParserInter
-     *              @see MarkdownLineParserMapper
      * page在集合中的顺序即为markdown的行号
      * */
     public MarkdownPage parse(String[] contents){
-        MarkdownPage page = new MarkdownPage();
+        MarkdownPage page = new MarkdownPage(parseTypeHandler,contextTypeHandler);
         for (int i = 0; i < contents.length; i++) {
             //空行判断
             if(exceptNull(page,contents[i])){continue;}
@@ -58,7 +57,7 @@ public class MarkdownParser {
                 continue;
             }
             //解析失败，将其作为标准行解析
-            MarkdownHandlerMapper.get(LineElementType.STANDARD).parse(contents,i,page);
+            STANDARD_PARSER.parse(contents,i,page);
         }
 
         return page;
@@ -74,7 +73,7 @@ public class MarkdownParser {
 
     private MarkdownLineHandlerInter contextParse(MarkdownPage page,String[] lines,int index){
         for (MarkdownLineHandlerInter inter : contextTypeHandler) {
-            if (inter.isMatch(lines,index,page)){
+            if (inter.isParseMatch(lines,index,page)){
                 return inter;
             }
         }
@@ -88,7 +87,7 @@ public class MarkdownParser {
         }
         List<MarkdownLineHandlerInter> markdownLineHandlerInters = parseTypeHandler.get(first);
         for (MarkdownLineHandlerInter markdownLineHandlerInter : markdownLineHandlerInters) {
-            if(markdownLineHandlerInter.isMatch(lines,index,page)){
+            if(markdownLineHandlerInter.isParseMatch(lines,index,page)){
                 return markdownLineHandlerInter;
             }
         }

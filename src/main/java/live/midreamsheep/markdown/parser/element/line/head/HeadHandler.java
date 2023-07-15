@@ -1,6 +1,6 @@
 package live.midreamsheep.markdown.parser.element.line.head;
 
-import live.midreamsheep.markdown.parser.element.line.mapper.update.delete.MarkdownStandardDelete;
+import live.midreamsheep.markdown.parser.api.line.MarkdownStandardDelete;
 import live.midreamsheep.markdown.parser.element.span.SpanParser;
 import live.midreamsheep.markdown.parser.element.span.Span;
 import live.midreamsheep.markdown.parser.page.MarkdownPage;
@@ -45,7 +45,7 @@ public class HeadHandler extends MarkdownStandardDelete {
     }
 
     @Override
-    public boolean isMatch(String[] lines, int index, MarkdownPage page) {
+    public boolean isParseMatch(String[] lines, int index, MarkdownPage page) {
         String line = lines[index];
         char[] chars = line.toCharArray();
         for (int i = 0; i <=6; i++) {
@@ -58,4 +58,21 @@ public class HeadHandler extends MarkdownStandardDelete {
         }
         return false;
     }
+
+    @Override
+    public boolean update(String content, int index, MarkdownPage page) {
+        for (int i = 0; i < content.trim().toCharArray().length; i++) {
+            if(content.charAt(i) != '#'){
+                HeadLine head = new HeadLine();
+                Span span = new Span();
+                head.setLevel(HeadLevel.getHeadLevel(i));
+                SpanParser.parse(content.substring(i),span);
+                head.setContent(span);
+                head.setLineContent(content);
+                page.addNewLine(index,head);
+            }
+        }
+        return true;
+    }
+
 }

@@ -2,7 +2,6 @@ package live.midreamsheep.markdown.parser.element.line.horizontal;
 
 import live.midreamsheep.markdown.parser.element.line.MarkdownLine;
 import live.midreamsheep.markdown.parser.element.line.LineElementType;
-import live.midreamsheep.markdown.parser.element.line.mapper.parser.MarkdownLineParserMapper;
 import live.midreamsheep.markdown.parser.element.span.Span;
 
 /**
@@ -15,7 +14,6 @@ import live.midreamsheep.markdown.parser.element.span.Span;
  * @author midreamsheep
  * @since 2023/5/1
  * @version 1.0
- * @see MarkdownLineParserMapper
  * */
 public class HorizontalLine extends MarkdownLine {
 

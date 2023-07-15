@@ -1,7 +1,7 @@
 package live.midreamsheep.markdown.parser.api.standard;
 
 import live.midreamsheep.markdown.parser.api.MarkdownHandlerCollectionAPI;
-import live.midreamsheep.markdown.parser.api.MarkdownLineHandlerInter;
+import live.midreamsheep.markdown.parser.api.line.MarkdownLineHandlerInter;
 
 import java.util.List;
 import java.util.Map;

@@ -2,7 +2,7 @@ package live.midreamsheep.markdown.parser.element.line.table;
 
 import live.midreamsheep.markdown.parser.element.line.LineElementType;
 import live.midreamsheep.markdown.parser.element.line.MarkdownLine;
-import live.midreamsheep.markdown.parser.api.MarkdownLineHandlerInter;
+import live.midreamsheep.markdown.parser.api.line.MarkdownLineHandlerInter;
 import live.midreamsheep.markdown.parser.element.line.standard.Standard;
 import live.midreamsheep.markdown.parser.element.span.SpanParser;
 import live.midreamsheep.markdown.parser.element.span.Span;
@@ -128,11 +128,23 @@ public class TableHandler implements MarkdownLineHandlerInter {
     }
 
     @Override
-    public boolean isMatch(String[] lines, int index, MarkdownPage page) {
+    public boolean isParseMatch(String[] lines, int index, MarkdownPage page) {
         String line = lines[index].trim();
         if (line.length() < 3 || line.charAt(0) != '|' || line.charAt(line.length() - 1) != '|') {
             return false;
         }
         return line.split("\\|").length == lines[index + 1].trim().split("\\|").length;
+    }
+
+    @Override
+    public boolean update(String content, int index, MarkdownPage page) {
+        //TODO
+        return false;
+    }
+
+    @Override
+    public boolean isUpdateMatch(String content, int index, MarkdownPage page) {
+        //TODO
+        return false;
     }
 }

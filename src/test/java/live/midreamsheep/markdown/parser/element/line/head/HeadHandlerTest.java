@@ -9,14 +9,14 @@ public class HeadHandlerTest {
     public void test(){
         String[] test = new String[]{"# h1","## h2","### h3","#### h4","##### h5","###### h6","####### h7","###h8"};
         HeadHandler headHandler = new HeadHandler();
-        assert headHandler.isMatch(test,0,null):"h1匹配失败";
-        assert headHandler.isMatch(test,1,null):"h2匹配失败";
-        assert headHandler.isMatch(test,2,null):"h3匹配失败";
-        assert headHandler.isMatch(test,3,null):"h4匹配失败";
-        assert headHandler.isMatch(test,4,null):"h5匹配失败";
-        assert headHandler.isMatch(test,5,null):"h6匹配失败";
-        assert !headHandler.isMatch(test,6,null):"h7匹配失败";
-        assert !headHandler.isMatch(test,7,null):"h8匹配失败";
+        assert headHandler.isParseMatch(test,0,null):"h1匹配失败";
+        assert headHandler.isParseMatch(test,1,null):"h2匹配失败";
+        assert headHandler.isParseMatch(test,2,null):"h3匹配失败";
+        assert headHandler.isParseMatch(test,3,null):"h4匹配失败";
+        assert headHandler.isParseMatch(test,4,null):"h5匹配失败";
+        assert headHandler.isParseMatch(test,5,null):"h6匹配失败";
+        assert !headHandler.isParseMatch(test,6,null):"h7匹配失败";
+        assert !headHandler.isParseMatch(test,7,null):"h8匹配失败";
         MarkdownPage page = new MarkdownPage();
         headHandler.parse(test,0,page);
         assert page.getLines().size() == 1:"h1解析失败";

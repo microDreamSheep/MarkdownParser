@@ -1,4 +1,4 @@
-package live.midreamsheep.markdown.parser.element.line.mapper.update.delete;
+package live.midreamsheep.markdown.parser.api.line.delete;
 
 import live.midreamsheep.markdown.parser.element.line.MarkdownLine;
 

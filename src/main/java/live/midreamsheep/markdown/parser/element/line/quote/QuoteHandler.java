@@ -3,7 +3,7 @@ package live.midreamsheep.markdown.parser.element.line.quote;
 import live.midreamsheep.markdown.parser.api.standard.MarkdownStandardParserCollection;
 import live.midreamsheep.markdown.parser.element.line.LineElementType;
 import live.midreamsheep.markdown.parser.element.line.MarkdownLine;
-import live.midreamsheep.markdown.parser.element.line.mapper.update.delete.MarkdownStandardDelete;
+import live.midreamsheep.markdown.parser.api.line.MarkdownStandardDelete;
 import live.midreamsheep.markdown.parser.page.MarkdownParser;
 import live.midreamsheep.markdown.parser.page.MarkdownPage;
 import live.midreamsheep.markdown.parser.page.MarkdownParserBuilder;
@@ -70,7 +70,19 @@ public class QuoteHandler extends MarkdownStandardDelete {
     }
 
     @Override
-    public boolean isMatch(String[] lines, int index, MarkdownPage page) {
+    public boolean isParseMatch(String[] lines, int index, MarkdownPage page) {
         return lines[index].trim().startsWith(">");
+    }
+
+    @Override
+    public boolean update(String content, int index, MarkdownPage page) {
+        //TODO
+        return false;
+    }
+
+    @Override
+    public boolean isUpdateMatch(String content, int index, MarkdownPage page) {
+        //TODO
+        return false;
     }
 }
