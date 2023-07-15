@@ -2,7 +2,7 @@ package live.midreamsheep.markdown.parser.element.line.mapper.parser;
 
 import live.midreamsheep.markdown.parser.element.line.LineElementType;
 import live.midreamsheep.markdown.parser.element.line.mapper.MarkdownHandlerMapper;
-import live.midreamsheep.markdown.parser.element.line.mapper.MarkdownLineHandlerInter;
+import live.midreamsheep.markdown.parser.api.MarkdownLineHandlerInter;
 
 import java.util.HashMap;
 import java.util.LinkedList;

@@ -1,7 +1,7 @@
 package live.midreamsheep.markdown.parser.element.line.mapper.update.delete;
 
 import live.midreamsheep.markdown.parser.element.line.MarkdownLine;
-import live.midreamsheep.markdown.parser.element.line.mapper.MarkdownLineHandlerInter;
+import live.midreamsheep.markdown.parser.api.MarkdownLineHandlerInter;
 import live.midreamsheep.markdown.parser.page.MarkdownPage;
 
 import java.util.List;

@@ -2,7 +2,7 @@ package live.midreamsheep.markdown.parser.element.span.italic;
 
 import live.midreamsheep.markdown.parser.element.span.SpanParser;
 import live.midreamsheep.markdown.parser.element.span.Span;
-import live.midreamsheep.markdown.parser.element.span.SpanParserInter;
+import live.midreamsheep.markdown.parser.api.SpanParserInter;
 import live.midreamsheep.markdown.parser.element.span.SpanParserMapper;
 
 /**

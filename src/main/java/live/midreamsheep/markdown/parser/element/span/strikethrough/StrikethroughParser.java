@@ -2,9 +2,8 @@ package live.midreamsheep.markdown.parser.element.span.strikethrough;
 
 import live.midreamsheep.markdown.parser.element.span.SpanParser;
 import live.midreamsheep.markdown.parser.element.span.Span;
-import live.midreamsheep.markdown.parser.element.span.SpanParserInter;
+import live.midreamsheep.markdown.parser.api.SpanParserInter;
 import live.midreamsheep.markdown.parser.element.span.SpanParserMapper;
-import live.midreamsheep.markdown.parser.element.span.bold.BoldSpan;
 
 /**
  * 删除线行内格式解析器，用于解析~~删除线~~格式的行内格式

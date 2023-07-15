@@ -2,7 +2,7 @@ package live.midreamsheep.markdown.parser.element.line.table;
 
 import live.midreamsheep.markdown.parser.element.line.LineElementType;
 import live.midreamsheep.markdown.parser.element.line.MarkdownLine;
-import live.midreamsheep.markdown.parser.element.line.mapper.MarkdownLineHandlerInter;
+import live.midreamsheep.markdown.parser.api.MarkdownLineHandlerInter;
 import live.midreamsheep.markdown.parser.element.line.standard.Standard;
 import live.midreamsheep.markdown.parser.element.span.SpanParser;
 import live.midreamsheep.markdown.parser.element.span.Span;

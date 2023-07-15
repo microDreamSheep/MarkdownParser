@@ -1,5 +1,6 @@
 package live.midreamsheep.markdown.parser.element.line.mapper;
 
+import live.midreamsheep.markdown.parser.api.MarkdownLineHandlerInter;
 import live.midreamsheep.markdown.parser.element.line.LineElementType;
 import live.midreamsheep.markdown.parser.element.line.code.CodeHandler;
 import live.midreamsheep.markdown.parser.element.line.head.HeadHandler;
@@ -12,7 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MarkdownHandlerMapper {
-    private static final Map<LineElementType,MarkdownLineHandlerInter> mapper = new HashMap<>();
+    private static final Map<LineElementType, MarkdownLineHandlerInter> mapper = new HashMap<>();
 
     public static void register(LineElementType type, MarkdownLineHandlerInter handler){
         mapper.put(type, handler);
@@ -37,5 +38,4 @@ public class MarkdownHandlerMapper {
     public static MarkdownLineHandlerInter get(LineElementType type){
         return mapper.get(type);
     }
-
 }

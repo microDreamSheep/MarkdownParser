@@ -1,7 +1,7 @@
 package live.midreamsheep.markdown.parser.element.span.image;
 
 import live.midreamsheep.markdown.parser.element.span.Span;
-import live.midreamsheep.markdown.parser.element.span.SpanParserInter;
+import live.midreamsheep.markdown.parser.api.SpanParserInter;
 import live.midreamsheep.markdown.parser.element.span.SpanParserMapper;
 import live.midreamsheep.markdown.parser.element.span.link.LinkSpan;
 import live.midreamsheep.markdown.parser.tool.str.MarkdownParserStringUntil;

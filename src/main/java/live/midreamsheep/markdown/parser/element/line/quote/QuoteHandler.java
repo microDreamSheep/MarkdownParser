@@ -1,10 +1,12 @@
 package live.midreamsheep.markdown.parser.element.line.quote;
 
+import live.midreamsheep.markdown.parser.api.standard.MarkdownStandardParserCollection;
 import live.midreamsheep.markdown.parser.element.line.LineElementType;
 import live.midreamsheep.markdown.parser.element.line.MarkdownLine;
 import live.midreamsheep.markdown.parser.element.line.mapper.update.delete.MarkdownStandardDelete;
 import live.midreamsheep.markdown.parser.page.MarkdownParser;
 import live.midreamsheep.markdown.parser.page.MarkdownPage;
+import live.midreamsheep.markdown.parser.page.MarkdownParserBuilder;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -46,7 +48,7 @@ public class QuoteHandler extends MarkdownStandardDelete {
         if(lineList.size() == 0){
             return -1;
         }
-        MarkdownParser markdownPage = new MarkdownParser();
+        MarkdownParser markdownPage = new MarkdownParserBuilder(new MarkdownStandardParserCollection()).build();
         setQuote(page,markdownPage.parse(lineList.toArray(new String[0])).getLines());
         return result-1;
     }

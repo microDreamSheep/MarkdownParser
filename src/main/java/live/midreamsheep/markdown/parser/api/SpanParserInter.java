@@ -1,4 +1,8 @@
-package live.midreamsheep.markdown.parser.element.span;
+package live.midreamsheep.markdown.parser.api;
+
+import live.midreamsheep.markdown.parser.element.span.Span;
+import live.midreamsheep.markdown.parser.element.span.SpanParser;
+import live.midreamsheep.markdown.parser.element.span.SpanParserMapper;
 
 /**
  * 行内元素处理接口

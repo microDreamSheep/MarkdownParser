@@ -1,5 +1,6 @@
 package live.midreamsheep.markdown.parser.element.span;
 
+import live.midreamsheep.markdown.parser.api.SpanParserInter;
 import live.midreamsheep.markdown.parser.element.span.bold.BoldParser;
 import live.midreamsheep.markdown.parser.element.span.image.ImageParser;
 import live.midreamsheep.markdown.parser.element.span.italic.ItalicParser;
